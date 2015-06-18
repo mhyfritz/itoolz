@@ -8,9 +8,14 @@ exports.count = function* (start, step) {
   }
 }
 
-exports.cycle = function* (p) {
+exports.cycle = function* (it) {
+  var xs = [];
+  for (let x of it) {
+    yield x;
+    xs.push(x);
+  }
   while (true) {
-    for (let x of p) {
+    for (let x of xs) {
       yield x;
     }
   }
