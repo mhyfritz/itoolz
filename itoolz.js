@@ -29,3 +29,11 @@ exports.repeat = function* (elem, n) {
     yield elem;
   }
 }
+
+exports.chain = function* (...its) {
+  for (let it of its) {
+    for (let x of it) {
+      yield x;
+    }
+  }
+}
