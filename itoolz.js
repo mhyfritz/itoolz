@@ -1,6 +1,6 @@
 'use strict';
 
-exports.count = function* count(start, step) {
+exports.count = function* (start, step) {
   start = start || 0;
   step = step || 1;
   for (let i = start; ; i += step) {
@@ -8,7 +8,7 @@ exports.count = function* count(start, step) {
   }
 }
 
-exports.cycle = function* cycle(p) {
+exports.cycle = function* (p) {
   while (true) {
     for (let x of p) {
       yield x;
