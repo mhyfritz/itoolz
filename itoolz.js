@@ -15,3 +15,12 @@ exports.cycle = function* (p) {
     }
   }
 }
+
+exports.repeat = function* (elem, n) {
+  while (true) {
+    if (typeof n !== undefined && n-- === 0) {
+      break;
+    }
+    yield elem;
+  }
+}
