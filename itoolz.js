@@ -7,3 +7,11 @@ exports.count = function* count(start, step) {
     yield i;
   }
 }
+
+exports.cycle = function* cycle(p) {
+  while (true) {
+    for (let x of p) {
+      yield x;
+    }
+  }
+}
