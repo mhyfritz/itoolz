@@ -37,3 +37,11 @@ exports.chain = function* (...its) {
     }
   }
 }
+
+exports.chainFromIterable = function* (it) {
+  for (let xs of it) {
+    for (let x of xs) {
+      yield x;
+    }
+  }
+}
