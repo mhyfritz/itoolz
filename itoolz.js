@@ -30,6 +30,20 @@ exports.repeat = function* (elem, n) {
   }
 }
 
+exports.accumulate = function* (xs, f) {
+  f = f || add;
+  var it = xs[Symbol.iterator] ? xs[Symbol.iterator]() : xs;
+  var acc = it.next().value;
+  if (acc === undefined) {
+    return;
+  }
+  yield acc;
+  for (let x of it) {
+    acc = f(acc, x);
+    yield acc;
+  }
+}
+
 exports.chain = function* (...its) {
   for (let it of its) {
     for (let x of it) {
@@ -44,4 +58,8 @@ exports.chainFromIterable = function* (it) {
       yield x;
     }
   }
+}
+
+function add(x, y) {
+  return x + y;
 }
