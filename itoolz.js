@@ -23,7 +23,7 @@ exports.cycle = function* (it) {
 
 exports.repeat = function* (elem, n) {
   while (true) {
-    if (typeof n !== undefined && n-- === 0) {
+    if (n !== undefined && n-- === 0) {
       break;
     }
     yield elem;
@@ -58,6 +58,31 @@ exports.chainFromIterable = function* (it) {
       yield x;
     }
   }
+}
+
+exports.zip = function* (...xss) {
+  var its = xss.map(function (xs) {
+    return xs[Symbol.iterator] ? xs[Symbol.iterator]() : xs;
+  });
+  while (its) {
+    let ret = its.map(function (it) {
+      return it.next().value;
+    });
+    if (all(ret, x => x !== undefined)) {
+      yield ret;
+    } else {
+      return;
+    }
+  }
+}
+
+exports.all = function (it, f) {
+  for (let x of it) {
+    if (! f(x)) {
+      return false;
+    }
+  }
+  return true;
 }
 
 function add(x, y) {
