@@ -9,7 +9,8 @@ module.exports = {
   chainFromIterable: chainFromIterable,
   compress: compress,
   zip: zip,
-  all: all
+  all: all,
+  any: any
 };
 
 function* count(start, step) {
@@ -103,6 +104,15 @@ function all(it, f) {
     }
   }
   return true;
+}
+
+function any(it, f) {
+  for (let x of it) {
+    if (f(x)) {
+      return true;
+    }
+  }
+  return false;
 }
 
 function add(x, y) {
