@@ -1,6 +1,18 @@
 'use strict';
 
-exports.count = function* (start, step) {
+module.exports = {
+  count: count,
+  cycle: cycle,
+  repeat: repeat,
+  accumulate: accumulate,
+  chain: chain,
+  chainFromIterable: chainFromIterable,
+  compress: compress,
+  zip: zip,
+  all: all
+};
+
+function* count(start, step) {
   start = start || 0;
   step = step || 1;
   for (let i = start; ; i += step) {
@@ -8,7 +20,7 @@ exports.count = function* (start, step) {
   }
 }
 
-exports.cycle = function* (it) {
+function* cycle(it) {
   var xs = [];
   for (let x of it) {
     yield x;
@@ -21,7 +33,7 @@ exports.cycle = function* (it) {
   }
 }
 
-exports.repeat = function* (elem, n) {
+function* repeat(elem, n) {
   while (true) {
     if (n !== undefined && n-- === 0) {
       break;
@@ -30,7 +42,7 @@ exports.repeat = function* (elem, n) {
   }
 }
 
-exports.accumulate = function* (xs, f) {
+function* accumulate(xs, f) {
   f = f || add;
   var it = xs[Symbol.iterator] ? xs[Symbol.iterator]() : xs;
   var acc = it.next().value;
@@ -44,7 +56,7 @@ exports.accumulate = function* (xs, f) {
   }
 }
 
-exports.chain = function* (...its) {
+function* chain(...its) {
   for (let it of its) {
     for (let x of it) {
       yield x;
@@ -52,7 +64,7 @@ exports.chain = function* (...its) {
   }
 }
 
-exports.chainFromIterable = function* (it) {
+function* chainFromIterable(it) {
   for (let xs of it) {
     for (let x of xs) {
       yield x;
@@ -60,7 +72,15 @@ exports.chainFromIterable = function* (it) {
   }
 }
 
-exports.zip = function* (...xss) {
+function* compress(it, select) {
+  for (let xs of zip(it, select)) {
+    if (xs[1]) {
+      yield xs[0];
+    }
+  }
+}
+
+function* zip(...xss) {
   var its = xss.map(function (xs) {
     return xs[Symbol.iterator] ? xs[Symbol.iterator]() : xs;
   });
@@ -76,7 +96,7 @@ exports.zip = function* (...xss) {
   }
 }
 
-exports.all = function (it, f) {
+function all(it, f) {
   for (let x of it) {
     if (! f(x)) {
       return false;
