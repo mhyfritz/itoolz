@@ -8,6 +8,7 @@ module.exports = {
   chain: chain,
   chainFromIterable: chainFromIterable,
   compress: compress,
+  dropwhile: dropwhile,
   zip: zip,
   all: all,
   any: any
@@ -78,6 +79,20 @@ function* compress(it, select) {
     if (xs[1]) {
       yield xs[0];
     }
+  }
+}
+
+function* dropwhile(predicate, xs) {
+  var x;
+  var it = xs[Symbol.iterator] ? xs[Symbol.iterator]() : xs;
+  for (x of it) {
+    if (! predicate(x)) {
+      yield x;
+      break;
+    }
+  }
+  for (x of it) {
+    yield x;
   }
 }
 
