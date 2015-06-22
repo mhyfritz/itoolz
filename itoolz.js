@@ -9,9 +9,12 @@ module.exports = {
   chainFromIterable: chainFromIterable,
   compress: compress,
   dropwhile: dropwhile,
+  filter: filter,
+  filterfalse: filterfalse,
   zip: zip,
   all: all,
-  any: any
+  any: any,
+  range: range
 };
 
 function* count(start, step) {
@@ -96,6 +99,24 @@ function* dropwhile(predicate, xs) {
   }
 }
 
+function* filter(predicate, it) {
+  if (! predicate) {
+    predicate = Boolean;
+  }
+  for (let x of it) {
+    if (predicate(x)) {
+      yield x;
+    }
+  }
+}
+
+function* filterfalse(predicate, it) {
+  if (! predicate) {
+    predicate = Boolean;
+  }
+  yield* filter(x => !predicate(x), it);
+}
+
 function* zip(...xss) {
   var its = xss.map(function (xs) {
     return xs[Symbol.iterator] ? xs[Symbol.iterator]() : xs;
@@ -128,6 +149,20 @@ function any(it, f) {
     }
   }
   return false;
+}
+
+function* range(start, stop, step) {
+  if (stop === undefined) {
+    stop = start;
+    start = 0;
+  }
+  step = step || 1;
+  for (let i of count(start, step)) {
+    if (i >= stop) {
+      return;
+    }
+    yield i;
+  }
 }
 
 function add(x, y) {
