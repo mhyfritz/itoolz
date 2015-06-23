@@ -18,9 +18,7 @@ module.exports = {
   range: range
 };
 
-function* count(start, step) {
-  start = start || 0;
-  step = step || 1;
+function* count(start = 0, step = 1) {
   for (let i = start; ; i += step) {
     yield i;
   }
@@ -48,8 +46,7 @@ function* repeat(elem, n) {
   }
 }
 
-function* accumulate(xs, f) {
-  f = f || add;
+function* accumulate(xs, f = add) {
   var it = xs[Symbol.iterator] ? xs[Symbol.iterator]() : xs;
   var acc = it.next().value;
   if (acc === undefined) {
@@ -161,17 +158,15 @@ function any(it, f) {
   return false;
 }
 
-function* enumerate(xs, start) {
-  start = start || 0;
+function* enumerate(xs, start = 0) {
   yield* zip(count(start), xs);
 }
 
-function* range(start, stop, step) {
+function* range(start, stop, step = 1) {
   if (stop === undefined) {
     stop = start;
     start = 0;
   }
-  step = step || 1;
   for (let i of count(start, step)) {
     if (i >= stop) {
       return;
