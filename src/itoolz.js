@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = {
   count: count,
   cycle: cycle,
