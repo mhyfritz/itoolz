@@ -13,6 +13,7 @@ module.exports = {
   zip: zip,
   all: all,
   any: any,
+  enumerate: enumerate,
   map: map,
   range: range
 };
@@ -158,6 +159,11 @@ function any(it, f) {
     }
   }
   return false;
+}
+
+function* enumerate(xs, start) {
+  start = start || 0;
+  yield* zip(count(start), xs);
 }
 
 function* range(start, stop, step) {
