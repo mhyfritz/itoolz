@@ -11,6 +11,7 @@ module.exports = {
   dropwhile: dropwhile,
   filter: filter,
   filterfalse: filterfalse,
+  takewhile: takewhile,
   zip: zip,
   all: all,
   any: any,
@@ -115,6 +116,15 @@ function* filterfalse(predicate, it) {
     predicate = Boolean;
   }
   yield* filter(x => !predicate(x), it);
+}
+
+function* takewhile(predicate, it) {
+  for (let x of it) {
+    if (!predicate(x)) {
+      return;
+    }
+    yield x;
+  }
 }
 
 function* zip(...xss) {
