@@ -15,6 +15,7 @@ module.exports = {
   zip: zip,
   all: all,
   any: any,
+  map: map,
   range: range
 };
 
@@ -172,6 +173,12 @@ function* range(start, stop, step) {
       return;
     }
     yield i;
+  }
+}
+
+function* map(f, ...xss) {
+  for(let xs of zip(...xss)) {
+    yield f(...xs);
   }
 }
 
