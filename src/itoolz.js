@@ -14,6 +14,7 @@ module.exports = {
   map: map,
   range: range,
   repeat: repeat,
+  starmap: starmap,
   takewhile: takewhile,
   zip: zip
 };
@@ -153,6 +154,12 @@ function* repeat(elem, n) {
       break;
     }
     yield elem;
+  }
+}
+
+function* starmap(f, it) {
+  for (let xs of it) {
+    yield f(...xs);
   }
 }
 
