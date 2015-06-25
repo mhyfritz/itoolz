@@ -1,50 +1,22 @@
 module.exports = {
-  count: count,
-  cycle: cycle,
-  repeat: repeat,
   accumulate: accumulate,
+  all: all,
+  any: any,
   chain: chain,
   chainFromIterable: chainFromIterable,
   compress: compress,
+  count: count,
+  cycle: cycle,
   dropwhile: dropwhile,
+  enumerate: enumerate,
   filter: filter,
   filterfalse: filterfalse,
-  takewhile: takewhile,
-  zip: zip,
-  all: all,
-  any: any,
-  enumerate: enumerate,
   map: map,
-  range: range
+  range: range,
+  repeat: repeat,
+  takewhile: takewhile,
+  zip: zip
 };
-
-function* count(start = 0, step = 1) {
-  for (let i = start; ; i += step) {
-    yield i;
-  }
-}
-
-function* cycle(it) {
-  var xs = [];
-  for (let x of it) {
-    yield x;
-    xs.push(x);
-  }
-  while (true) {
-    for (let x of xs) {
-      yield x;
-    }
-  }
-}
-
-function* repeat(elem, n) {
-  while (true) {
-    if (n !== undefined && n-- === 0) {
-      break;
-    }
-    yield elem;
-  }
-}
 
 function* accumulate(xs, f = add) {
   var it = xs[Symbol.iterator] ? xs[Symbol.iterator]() : xs;
@@ -57,6 +29,24 @@ function* accumulate(xs, f = add) {
     acc = f(acc, x);
     yield acc;
   }
+}
+
+function all(it, f) {
+  for (let x of it) {
+    if (! f(x)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function any(it, f) {
+  for (let x of it) {
+    if (f(x)) {
+      return true;
+    }
+  }
+  return false;
 }
 
 function* chain(...its) {
@@ -83,6 +73,25 @@ function* compress(it, select) {
   }
 }
 
+function* count(start = 0, step = 1) {
+  for (let i = start; ; i += step) {
+    yield i;
+  }
+}
+
+function* cycle(it) {
+  var xs = [];
+  for (let x of it) {
+    yield x;
+    xs.push(x);
+  }
+  while (true) {
+    for (let x of xs) {
+      yield x;
+    }
+  }
+}
+
 function* dropwhile(predicate, xs) {
   var x;
   var it = xs[Symbol.iterator] ? xs[Symbol.iterator]() : xs;
@@ -95,6 +104,10 @@ function* dropwhile(predicate, xs) {
   for (x of it) {
     yield x;
   }
+}
+
+function* enumerate(xs, start = 0) {
+  yield* zip(count(start), xs);
 }
 
 function* filter(predicate, it) {
@@ -113,6 +126,34 @@ function* filterfalse(predicate, it) {
     predicate = Boolean;
   }
   yield* filter(x => !predicate(x), it);
+}
+
+function* map(f, ...xss) {
+  for(let xs of zip(...xss)) {
+    yield f(...xs);
+  }
+}
+
+function* range(start, stop, step = 1) {
+  if (stop === undefined) {
+    stop = start;
+    start = 0;
+  }
+  for (let i of count(start, step)) {
+    if (i >= stop) {
+      return;
+    }
+    yield i;
+  }
+}
+
+function* repeat(elem, n) {
+  while (true) {
+    if (n !== undefined && n-- === 0) {
+      break;
+    }
+    yield elem;
+  }
 }
 
 function* takewhile(predicate, it) {
@@ -137,47 +178,6 @@ function* zip(...xss) {
     } else {
       return;
     }
-  }
-}
-
-function all(it, f) {
-  for (let x of it) {
-    if (! f(x)) {
-      return false;
-    }
-  }
-  return true;
-}
-
-function any(it, f) {
-  for (let x of it) {
-    if (f(x)) {
-      return true;
-    }
-  }
-  return false;
-}
-
-function* enumerate(xs, start = 0) {
-  yield* zip(count(start), xs);
-}
-
-function* range(start, stop, step = 1) {
-  if (stop === undefined) {
-    stop = start;
-    start = 0;
-  }
-  for (let i of count(start, step)) {
-    if (i >= stop) {
-      return;
-    }
-    yield i;
-  }
-}
-
-function* map(f, ...xss) {
-  for(let xs of zip(...xss)) {
-    yield f(...xs);
   }
 }
 
