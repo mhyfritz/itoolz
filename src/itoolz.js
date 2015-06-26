@@ -13,6 +13,7 @@ module.exports = {
   filterfalse: filterfalse,
   map: map,
   range: range,
+  reduce: reduce,
   repeat: repeat,
   starmap: starmap,
   takewhile: takewhile,
@@ -32,18 +33,18 @@ function* accumulate(xs, f = add) {
   }
 }
 
-function all(it, f) {
+function all(it) {
   for (let x of it) {
-    if (! f(x)) {
+    if (! x) {
       return false;
     }
   }
   return true;
 }
 
-function any(it, f) {
+function any(it) {
   for (let x of it) {
-    if (f(x)) {
+    if (x) {
       return true;
     }
   }
@@ -146,6 +147,23 @@ function* range(start, stop, step = 1) {
     }
     yield i;
   }
+}
+
+function reduce(f, xs, init) {
+  var it = xs[Symbol.iterator] ? xs[Symbol.iterator]() : xs;
+  var acc;
+  if (init !== undefined) {
+    acc = init;
+  } else {
+    acc = it.next().value;
+  }
+  if (acc === undefined) {
+    return;
+  }
+  for (let x of it) {
+    acc = f(acc, x);
+  }
+  return acc;
 }
 
 function* repeat(elem, n) {
