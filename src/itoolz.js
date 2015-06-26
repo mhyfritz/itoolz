@@ -32,18 +32,18 @@ function* accumulate(xs, f = add) {
   }
 }
 
-function all(it, f) {
+function all(it) {
   for (let x of it) {
-    if (! f(x)) {
+    if (! x) {
       return false;
     }
   }
   return true;
 }
 
-function any(it, f) {
+function any(it) {
   for (let x of it) {
-    if (f(x)) {
+    if (x) {
       return true;
     }
   }
