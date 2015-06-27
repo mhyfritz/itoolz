@@ -2,7 +2,7 @@
 
 function _slicedToArray(arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }
 
-var marked0$0 = [accumulate, chain, chainFromIterable, compress, count, cycle, dropwhile, enumerate, filter, filterfalse, map, range, repeat, slice, starmap, takewhile, zip].map(regeneratorRuntime.mark);
+var marked0$0 = [accumulate, chain, chainFromIterable, compress, count, cycle, dropwhile, enumerate, filter, filterfalse, iter, map, range, repeat, slice, starmap, takewhile, zip].map(regeneratorRuntime.mark);
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i]; return arr2; } else { return Array.from(arr); } }
 
@@ -19,6 +19,7 @@ module.exports = {
   enumerate: enumerate,
   filter: filter,
   filterfalse: filterfalse,
+  iter: iter,
   map: map,
   range: range,
   reduce: reduce,
@@ -37,7 +38,7 @@ function accumulate(xs) {
   return regeneratorRuntime.wrap(function accumulate$(context$1$0) {
     while (1) switch (context$1$0.prev = context$1$0.next) {
       case 0:
-        it = xs[Symbol.iterator] ? xs[Symbol.iterator]() : xs;
+        it = iter(xs);
         acc = it.next().value;
 
         if (!(acc === undefined)) {
@@ -666,7 +667,7 @@ function dropwhile(predicate, xs) {
   return regeneratorRuntime.wrap(function dropwhile$(context$1$0) {
     while (1) switch (context$1$0.prev = context$1$0.next) {
       case 0:
-        it = xs[Symbol.iterator] ? xs[Symbol.iterator]() : xs;
+        it = iter(xs);
         _iteratorNormalCompletion11 = true;
         _didIteratorError11 = false;
         _iteratorError11 = undefined;
@@ -903,6 +904,63 @@ function filterfalse(predicate, it) {
   }, marked0$0[9], this);
 }
 
+function iter(obj, sentinel) {
+  return regeneratorRuntime.wrap(function iter$(context$1$0) {
+    while (1) switch (context$1$0.prev = context$1$0.next) {
+      case 0:
+        if (!(sentinel === undefined)) {
+          context$1$0.next = 4;
+          break;
+        }
+
+        return context$1$0.delegateYield(obj[Symbol.iterator] ? obj[Symbol.iterator]() : obj, "t0", 2);
+
+      case 2:
+        context$1$0.next = 5;
+        break;
+
+      case 4:
+        return context$1$0.delegateYield(regeneratorRuntime.mark(function g() {
+          var x;
+          return regeneratorRuntime.wrap(function g$(context$2$0) {
+            while (1) switch (context$2$0.prev = context$2$0.next) {
+              case 0:
+                if (!true) {
+                  context$2$0.next = 8;
+                  break;
+                }
+
+                x = obj();
+
+                if (!(x === sentinel)) {
+                  context$2$0.next = 4;
+                  break;
+                }
+
+                return context$2$0.abrupt("return");
+
+              case 4:
+                context$2$0.next = 6;
+                return x;
+
+              case 6:
+                context$2$0.next = 0;
+                break;
+
+              case 8:
+              case "end":
+                return context$2$0.stop();
+            }
+          }, g, this);
+        })(), "t1", 5);
+
+      case 5:
+      case "end":
+        return context$1$0.stop();
+    }
+  }, marked0$0[10], this);
+}
+
 function map(f) {
   for (var _len2 = arguments.length, xss = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
     xss[_key2 - 1] = arguments[_key2];
@@ -972,7 +1030,7 @@ function map(f) {
       case "end":
         return context$1$0.stop();
     }
-  }, marked0$0[10], this, [[3, 14, 18, 26], [19,, 21, 25]]);
+  }, marked0$0[11], this, [[3, 14, 18, 26], [19,, 21, 25]]);
 }
 
 function range(start, stop) {
@@ -1055,11 +1113,11 @@ function range(start, stop) {
       case "end":
         return context$1$0.stop();
     }
-  }, marked0$0[11], this, [[4, 17, 21, 29], [22,, 24, 28]]);
+  }, marked0$0[12], this, [[4, 17, 21, 29], [22,, 24, 28]]);
 }
 
 function reduce(f, xs, init) {
-  var it = xs[Symbol.iterator] ? xs[Symbol.iterator]() : xs;
+  var it = iter(xs);
   var acc;
   if (init !== undefined) {
     acc = init;
@@ -1125,7 +1183,7 @@ function repeat(elem, n) {
       case "end":
         return context$1$0.stop();
     }
-  }, marked0$0[12], this);
+  }, marked0$0[13], this);
 }
 
 function slice(it, start, stop) {
@@ -1223,7 +1281,7 @@ function slice(it, start, stop) {
       case "end":
         return context$1$0.stop();
     }
-  }, marked0$0[13], this, [[6, 23, 27, 35], [28,, 30, 34]]);
+  }, marked0$0[14], this, [[6, 23, 27, 35], [28,, 30, 34]]);
 }
 
 function starmap(f, it) {
@@ -1291,7 +1349,7 @@ function starmap(f, it) {
       case "end":
         return context$1$0.stop();
     }
-  }, marked0$0[14], this, [[3, 14, 18, 26], [19,, 21, 25]]);
+  }, marked0$0[15], this, [[3, 14, 18, 26], [19,, 21, 25]]);
 }
 
 function takewhile(predicate, it) {
@@ -1368,7 +1426,7 @@ function takewhile(predicate, it) {
       case "end":
         return context$1$0.stop();
     }
-  }, marked0$0[15], this, [[3, 16, 20, 28], [21,, 23, 27]]);
+  }, marked0$0[16], this, [[3, 16, 20, 28], [21,, 23, 27]]);
 }
 
 function zip() {
@@ -1419,7 +1477,7 @@ function zip() {
       case "end":
         return context$1$0.stop();
     }
-  }, marked0$0[16], this);
+  }, marked0$0[17], this);
 }
 
 function add(x, y) {

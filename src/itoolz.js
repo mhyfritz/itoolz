@@ -11,6 +11,7 @@ module.exports = {
   enumerate: enumerate,
   filter: filter,
   filterfalse: filterfalse,
+  iter: iter,
   map: map,
   range: range,
   reduce: reduce,
@@ -22,7 +23,7 @@ module.exports = {
 };
 
 function* accumulate(xs, f = add) {
-  var it = xs[Symbol.iterator] ? xs[Symbol.iterator]() : xs;
+  var it = iter(xs);
   var acc = it.next().value;
   if (acc === undefined) {
     return;
@@ -97,7 +98,7 @@ function* cycle(it) {
 
 function* dropwhile(predicate, xs) {
   var x;
-  var it = xs[Symbol.iterator] ? xs[Symbol.iterator]() : xs;
+  var it = iter(xs);
   for (x of it) {
     if (! predicate(x)) {
       yield x;
@@ -131,6 +132,22 @@ function* filterfalse(predicate, it) {
   yield* filter(x => !predicate(x), it);
 }
 
+function* iter(obj, sentinel) {
+  if (sentinel === undefined) {
+    yield* obj[Symbol.iterator] ? obj[Symbol.iterator]() : obj;
+  } else {
+    yield* (function* g() {
+      while (true) {
+        let x = obj();
+        if (x === sentinel) {
+          return;
+        }
+        yield x;
+      }
+    }());
+  }
+}
+
 function* map(f, ...xss) {
   for(let xs of zip(...xss)) {
     yield f(...xs);
@@ -151,7 +168,7 @@ function* range(start, stop, step = 1) {
 }
 
 function reduce(f, xs, init) {
-  var it = xs[Symbol.iterator] ? xs[Symbol.iterator]() : xs;
+  var it = iter(xs);
   var acc;
   if (init !== undefined) {
     acc = init;
