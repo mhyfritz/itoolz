@@ -15,6 +15,7 @@ module.exports = {
   range: range,
   reduce: reduce,
   repeat: repeat,
+  slice: slice,
   starmap: starmap,
   takewhile: takewhile,
   zip: zip
@@ -33,18 +34,18 @@ function* accumulate(xs, f = add) {
   }
 }
 
-function all(it) {
+function all(it, f = Boolean) {
   for (let x of it) {
-    if (! x) {
+    if (! f(x)) {
       return false;
     }
   }
   return true;
 }
 
-function any(it) {
+function any(it, f = Boolean) {
   for (let x of it) {
-    if (x) {
+    if (f(x)) {
       return true;
     }
   }
@@ -142,7 +143,7 @@ function* range(start, stop, step = 1) {
     start = 0;
   }
   for (let i of count(start, step)) {
-    if (i >= stop) {
+    if (stop !== null && i >= stop) {
       return;
     }
     yield i;
@@ -173,6 +174,25 @@ function* repeat(elem, n) {
     }
     yield elem;
   }
+}
+
+function* slice(it, start, stop, step = 1) {
+  if (stop === undefined) {
+    stop = start;
+    start = 0;
+  }
+  var is = range(start, stop, step);
+  var nexti = is.next().value;
+  for (let [i, x] of enumerate(it)) {
+    if (nexti === undefined) {
+      break;
+    }
+    if (i === nexti) {
+      yield x;
+      nexti = is.next().value;
+    }
+  }
+  return;
 }
 
 function* starmap(f, it) {
