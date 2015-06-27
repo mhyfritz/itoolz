@@ -37,7 +37,7 @@ function* accumulate(xs, f = add) {
 
 function all(it, f = Boolean) {
   for (let x of it) {
-    if (! f(x)) {
+    if (!f(x)) {
       return false;
     }
   }
@@ -89,7 +89,7 @@ function* cycle(it) {
     yield x;
     xs.push(x);
   }
-  while (true) {
+  while (true) {  //eslint-disable-line no-constant-condition
     for (let x of xs) {
       yield x;
     }
@@ -100,7 +100,7 @@ function* dropwhile(predicate, xs) {
   var x;
   var it = iter(xs);
   for (x of it) {
-    if (! predicate(x)) {
+    if (!predicate(x)) {
       yield x;
       break;
     }
@@ -115,7 +115,7 @@ function* enumerate(xs, start = 0) {
 }
 
 function* filter(predicate, it) {
-  if (! predicate) {
+  if (!predicate) {
     predicate = Boolean;
   }
   for (let x of it) {
@@ -126,7 +126,7 @@ function* filter(predicate, it) {
 }
 
 function* filterfalse(predicate, it) {
-  if (! predicate) {
+  if (!predicate) {
     predicate = Boolean;
   }
   yield* filter(x => !predicate(x), it);
@@ -137,7 +137,7 @@ function* iter(obj, sentinel) {
     yield* obj[Symbol.iterator] ? obj[Symbol.iterator]() : obj;
   } else {
     yield* (function* g() {
-      while (true) {
+      while (true) { //eslint-disable-line no-constant-condition
         let x = obj();
         if (x === sentinel) {
           return;
@@ -175,9 +175,6 @@ function reduce(f, xs, init) {
   } else {
     acc = it.next().value;
   }
-  if (acc === undefined) {
-    return;
-  }
   for (let x of it) {
     acc = f(acc, x);
   }
@@ -185,7 +182,7 @@ function reduce(f, xs, init) {
 }
 
 function* repeat(elem, n) {
-  while (true) {
+  while (true) { //eslint-disable-line no-constant-condition
     if (n !== undefined && n-- === 0) {
       break;
     }
@@ -231,11 +228,11 @@ function* zip(...xss) {
   var its = xss.map(function (xs) {
     return xs[Symbol.iterator] ? xs[Symbol.iterator]() : xs;
   });
+  let next = it => it.next().value;
+  let isUndefined = x => x !== undefined;
   while (its) {
-    let ret = its.map(function (it) {
-      return it.next().value;
-    });
-    if (all(ret, x => x !== undefined)) {
+    let ret = its.map(next);
+    if (all(ret, isUndefined)) {
       yield ret;
     } else {
       return;

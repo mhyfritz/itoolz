@@ -1124,9 +1124,6 @@ function reduce(f, xs, init) {
   } else {
     acc = it.next().value;
   }
-  if (acc === undefined) {
-    return;
-  }
   var _iteratorNormalCompletion16 = true;
   var _didIteratorError16 = false;
   var _iteratorError16 = undefined;
@@ -1434,7 +1431,7 @@ function zip() {
     xss[_key3] = arguments[_key3];
   }
 
-  var its, ret;
+  var its, next, isUndefined, ret;
   return regeneratorRuntime.wrap(function zip$(context$1$0) {
     while (1) switch (context$1$0.prev = context$1$0.next) {
       case 0:
@@ -1442,38 +1439,42 @@ function zip() {
           return xs[Symbol.iterator] ? xs[Symbol.iterator]() : xs;
         });
 
-      case 1:
-        if (!its) {
-          context$1$0.next = 11;
-          break;
-        }
-
-        ret = its.map(function (it) {
+        next = function next(it) {
           return it.next().value;
-        });
+        };
 
-        if (!all(ret, function (x) {
+        isUndefined = function isUndefined(x) {
           return x !== undefined;
-        })) {
-          context$1$0.next = 8;
+        };
+
+      case 3:
+        if (!its) {
+          context$1$0.next = 13;
           break;
         }
 
-        context$1$0.next = 6;
+        ret = its.map(next);
+
+        if (!all(ret, isUndefined)) {
+          context$1$0.next = 10;
+          break;
+        }
+
+        context$1$0.next = 8;
         return ret;
 
-      case 6:
-        context$1$0.next = 9;
+      case 8:
+        context$1$0.next = 11;
         break;
 
-      case 8:
+      case 10:
         return context$1$0.abrupt("return");
 
-      case 9:
-        context$1$0.next = 1;
+      case 11:
+        context$1$0.next = 3;
         break;
 
-      case 11:
+      case 13:
       case "end":
         return context$1$0.stop();
     }
@@ -1483,5 +1484,8 @@ function zip() {
 function add(x, y) {
   return x + y;
 }
+//eslint-disable-line no-constant-condition
+//eslint-disable-line no-constant-condition
+//eslint-disable-line no-constant-condition
 
 //# sourceMappingURL=itoolz.js.map
