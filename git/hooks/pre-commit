@@ -1,5 +1,6 @@
 #!/bin/sh
 
+echo "eslint src/*.js"
 eslint src/*.js
 
 make
