@@ -1,7 +1,10 @@
-#!/bin/sh
+#! /usr/bin/env bash
 
-echo "eslint src/*.js"
+set -x
+
 eslint src/*.js
+
+babel-node test/*.js | faucet
 
 make
 git add dist
