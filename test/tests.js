@@ -1,6 +1,7 @@
 let itoolz = require('../dist/itoolz');
 let test = require('tape');
 
+// {{{ accumulate
 test('accumulate - default func - list', function (t) {
   t.plan(1);
   let actual, expect;
@@ -44,7 +45,181 @@ test('accumulate - multiply func - generator', function (t) {
   expect = [1, 2, 6, 24, 120];
   t.deepEqual(actual, expect);
 });
+// }}}
 
+// {{{ all
+test('all - booleans - all true - list', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = itoolz.all([true, true, true, true]);
+  expect = true;
+  t.equal(actual, expect);
+});
+
+test('all - booleans - all true - generator', function (t) {
+  t.plan(1);
+  let actual, expect;
+  function* g() {
+    for (let x of [true, true, true, true]) {
+      yield x;
+    }
+  }
+  actual = itoolz.all(g());
+  expect = true;
+  t.equal(actual, expect);
+});
+
+test('all - booleans - one false - list', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = itoolz.all([true, true, false, true]);
+  expect = false;
+  t.equal(actual, expect);
+});
+
+test('all - booleans - one false - generator', function (t) {
+  t.plan(1);
+  let actual, expect;
+  function* g() {
+    for (let x of [true, true, false, true]) {
+      yield x;
+    }
+  }
+  actual = itoolz.all(g());
+  expect = false;
+  t.equal(actual, expect);
+});
+
+test('all - booleans - all false - list', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = itoolz.all([false, false, false, false]);
+  expect = false;
+  t.equal(actual, expect);
+});
+
+test('all - booleans - all false - generator', function (t) {
+  t.plan(1);
+  let actual, expect;
+  function* g() {
+    for (let x of [false, false, false, false]) {
+      yield x;
+    }
+  }
+  actual = itoolz.all(g());
+  expect = false;
+  t.equal(actual, expect);
+});
+
+test('all  - all truthy - list', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = itoolz.all([true, 1, 7.7, 'foo', Infinity, [], {}]);
+  expect = true;
+  t.equal(actual, expect);
+});
+
+test('all  - all truthy - generator', function (t) {
+  t.plan(1);
+  let actual, expect;
+  function* g() {
+    for (let x of [true, 1, 7.7, 'foo', Infinity, [], {}]) {
+      yield x;
+    }
+  }
+  actual = itoolz.all(g());
+  expect = true;
+  t.equal(actual, expect);
+});
+// }}}
+
+// {{{ any
+test('any - booleans - all true - list', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = itoolz.any([true, true, true, true]);
+  expect = true;
+  t.equal(actual, expect);
+});
+
+test('any - booleans - all true - generator', function (t) {
+  t.plan(1);
+  let actual, expect;
+  function* g() {
+    for (let x of [true, true, true, true]) {
+      yield x;
+    }
+  }
+  actual = itoolz.any(g());
+  expect = true;
+  t.equal(actual, expect);
+});
+
+test('any - booleans - one true - list', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = itoolz.any([false, true, false, false]);
+  expect = true;
+  t.equal(actual, expect);
+});
+
+test('any - booleans - one true - generator', function (t) {
+  t.plan(1);
+  let actual, expect;
+  function* g() {
+    for (let x of [false, true, false, false]) {
+      yield x;
+    }
+  }
+  actual = itoolz.any(g());
+  expect = true;
+  t.equal(actual, expect);
+});
+
+test('any - booleans - all false - list', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = itoolz.any([false, false, false, false]);
+  expect = false;
+  t.equal(actual, expect);
+});
+
+test('any - booleans - all false - generator', function (t) {
+  t.plan(1);
+  let actual, expect;
+  function* g() {
+    for (let x of [false, false, false, false]) {
+      yield x;
+    }
+  }
+  actual = itoolz.any(g());
+  expect = false;
+  t.equal(actual, expect);
+});
+
+test('any  - all truthy - list', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = itoolz.any([true, 1, 7.7, 'foo', Infinity, [], {}]);
+  expect = true;
+  t.equal(actual, expect);
+});
+
+test('any  - all truthy - generator', function (t) {
+  t.plan(1);
+  let actual, expect;
+  function* g() {
+    for (let x of [true, 1, 7.7, 'foo', Infinity, [], {}]) {
+      yield x;
+    }
+  }
+  actual = itoolz.any(g());
+  expect = true;
+  t.equal(actual, expect);
+});
+// }}}
+
+// {{{ chain
 test('chain - two seqs - list', function (t) {
   t.plan(1);
   let actual, expect;
@@ -72,7 +247,9 @@ test('chain - two seqs - generator', function (t) {
   expect = ['A', 'B', 'C', 'D', 'E', 'F'];
   t.deepEqual(actual, expect);
 });
+// }}}
 
+// {{{ chainFromIterable
 test('chainFromIterable - two seqs - list', function (t) {
   t.plan(1);
   let actual, expect;
@@ -100,7 +277,9 @@ test('chainFromIterable - two seqs - generator', function (t) {
   expect = ['A', 'B', 'C', 'D', 'E', 'F'];
   t.deepEqual(actual, expect);
 });
+// }}}
 
+// {{{ compress
 test('compress - string', function (t) {
   t.plan(1);
   let actual, expect;
@@ -123,3 +302,4 @@ test('compress - string / generator', function (t) {
   expect = ['A', 'C', 'E', 'F'];
   t.deepEqual(actual, expect);
 });
+// }}}
