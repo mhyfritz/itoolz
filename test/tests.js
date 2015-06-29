@@ -1,70 +1,86 @@
-var itoolz = require('../dist/itoolz');
-var test = require('tape');
+let itoolz = require('../dist/itoolz');
+let test = require('tape');
 
 test('accumulate - default func - list', function (t) {
   t.plan(1);
-  var res = itoolz.accumulate([1, 2, 3, 4, 5]);
-  res = [...res];
-  t.deepEqual(res, [1, 3, 6, 10, 15]);
+  let result, expect;
+  result = itoolz.accumulate([1, 2, 3, 4, 5]);
+  result = [...result];
+  expect = [1, 3, 6, 10, 15];
+  t.deepEqual(result, expect);
 });
 
 test('accumulate - default func - generator', function (t) {
   t.plan(1);
-  var res = itoolz.accumulate(function* () {
+  let result, expect;
+  result = itoolz.accumulate(function* () {
     for (let x of [1, 2, 3, 4, 5]) {
       yield x;
     }
   }());
-  res = [...res];
-  t.deepEqual(res, [1, 3, 6, 10, 15]);
+  result = [...result];
+  expect = [1, 3, 6, 10, 15];
+  t.deepEqual(result, expect);
 });
 
 test('accumulate - multiply func - list', function (t) {
   t.plan(1);
-  var res = itoolz.accumulate([1, 2, 3, 4, 5], (x, y) => x * y);
-  res = [...res];
-  t.deepEqual(res, [1, 2, 6, 24, 120]);
+  let result, expect;
+  result = itoolz.accumulate([1, 2, 3, 4, 5], (x, y) => x * y);
+  result = [...result];
+  expect = [1, 2, 6, 24, 120];
+  t.deepEqual(result, expect);
 });
 
 test('accumulate - multiply func - generator', function (t) {
   t.plan(1);
-  var res = itoolz.accumulate(function* () {
+  let result, expect;
+  result = itoolz.accumulate(function* () {
     for (let x of [1, 2, 3, 4, 5]) {
       yield x;
     }
   }(), (x, y) => x * y);
-  res = [...res];
-  t.deepEqual(res, [1, 2, 6, 24, 120]);
+  result = [...result];
+  expect = [1, 2, 6, 24, 120];
+  t.deepEqual(result, expect);
 });
 
 test('chain - two seqs - list', function (t) {
   t.plan(1);
-  var res = itoolz.chain('ABC', 'DEF');
-  res = [...res];
-  t.deepEqual(res, ['A', 'B', 'C', 'D', 'E', 'F']);
+  let result, expect;
+  result = itoolz.chain('ABC', 'DEF');
+  result = [...result];
+  expect = ['A', 'B', 'C', 'D', 'E', 'F'];
+  t.deepEqual(result, expect);
 });
 
 test('chain - two seqs - generator', function (t) {
   t.plan(1);
+  let result, expect;
   function* g() { for (let x of 'ABC') { yield x; } };
   function* h() { for (let x of 'DEF') { yield x; } };
-  var res = itoolz.chain(g(), h());
-  res = [...res];
-  t.deepEqual(res, ['A', 'B', 'C', 'D', 'E', 'F']);
+  result = itoolz.chain(g(), h());
+  result = [...result];
+  expect = ['A', 'B', 'C', 'D', 'E', 'F'];
+  t.deepEqual(result, expect);
 });
 
 test('chainFromIterable - two seqs - list', function (t) {
   t.plan(1);
-  var res = itoolz.chainFromIterable(['ABC', 'DEF']);
-  res = [...res];
-  t.deepEqual(res, ['A', 'B', 'C', 'D', 'E', 'F']);
+  let result, expect;
+  result = itoolz.chainFromIterable(['ABC', 'DEF']);
+  result = [...result];
+  expect = ['A', 'B', 'C', 'D', 'E', 'F'];
+  t.deepEqual(result, expect);
 });
 
 test('chainFromIterable - two seqs - generator', function (t) {
   t.plan(1);
+  let result, expect;
   function* g() { for (let x of 'ABC') { yield x; } };
   function* h() { for (let x of 'DEF') { yield x; } };
-  var res = itoolz.chainFromIterable([g(), h()]);
-  res = [...res];
-  t.deepEqual(res, ['A', 'B', 'C', 'D', 'E', 'F']);
+  result = itoolz.chainFromIterable([g(), h()]);
+  result = [...result];
+  expect = ['A', 'B', 'C', 'D', 'E', 'F'];
+  t.deepEqual(result, expect);
 });
