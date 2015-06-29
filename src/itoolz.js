@@ -16,7 +16,6 @@ module.exports = {
   max: max,
   min: min,
   next: next,
-  next: next,
   range: range,
   reduce: reduce,
   repeat: repeat,
@@ -187,7 +186,7 @@ function min(it, keyfunc) {
 }
 
 function next(it) {
-  return it.next();
+  return it.next().value;
 }
 
 function* range(start, stop, step = 1) {
@@ -264,7 +263,6 @@ function* zip(...xss) {
   var its = xss.map(function (xs) {
     return xs[Symbol.iterator] ? xs[Symbol.iterator]() : xs;
   });
-  let next = it => it.next().value;
   let isUndefined = x => x !== undefined;
   while (its) {
     let ret = its.map(next);

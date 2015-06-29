@@ -24,7 +24,6 @@ module.exports = {
   max: max,
   min: min,
   next: next,
-  next: next,
   range: range,
   reduce: reduce,
   repeat: repeat,
@@ -1110,7 +1109,7 @@ function min(it, keyfunc) {
 }
 
 function next(it) {
-  return it.next();
+  return it.next().value;
 }
 
 function range(start, stop) {
@@ -1511,7 +1510,7 @@ function zip() {
     xss[_key3] = arguments[_key3];
   }
 
-  var its, next, isUndefined, ret;
+  var its, isUndefined, ret;
   return regeneratorRuntime.wrap(function zip$(context$1$0) {
     while (1) switch (context$1$0.prev = context$1$0.next) {
       case 0:
@@ -1519,42 +1518,38 @@ function zip() {
           return xs[Symbol.iterator] ? xs[Symbol.iterator]() : xs;
         });
 
-        next = function next(it) {
-          return it.next().value;
-        };
-
         isUndefined = function isUndefined(x) {
           return x !== undefined;
         };
 
-      case 3:
+      case 2:
         if (!its) {
-          context$1$0.next = 13;
+          context$1$0.next = 12;
           break;
         }
 
         ret = its.map(next);
 
         if (!all(ret, isUndefined)) {
-          context$1$0.next = 10;
+          context$1$0.next = 9;
           break;
         }
 
-        context$1$0.next = 8;
+        context$1$0.next = 7;
         return ret;
 
-      case 8:
-        context$1$0.next = 11;
+      case 7:
+        context$1$0.next = 10;
         break;
 
-      case 10:
+      case 9:
         return context$1$0.abrupt("return");
 
-      case 11:
-        context$1$0.next = 3;
+      case 10:
+        context$1$0.next = 2;
         break;
 
-      case 13:
+      case 12:
       case "end":
         return context$1$0.stop();
     }
