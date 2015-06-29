@@ -23,6 +23,8 @@ module.exports = {
   map: map,
   max: max,
   min: min,
+  next: next,
+  next: next,
   range: range,
   reduce: reduce,
   repeat: repeat,
@@ -1105,6 +1107,10 @@ function min(it, keyfunc) {
   }
 
   return res;
+}
+
+function next(it) {
+  return it.next();
 }
 
 function range(start, stop) {
