@@ -5,7 +5,7 @@ OUT    := $(OUTDIR)/itoolz.js
 
 all: $(OUT)
 
-.PHONY: test
+.PHONY: test lint check
 
 $(OUT): $(SRC)
 	babel $(SRC) --out-file $(OUT) --source-maps
@@ -15,3 +15,8 @@ watch:
 
 test:
 	babel-node test/*.js | faucet
+
+lint:
+	eslint src/*.js
+
+check: lint test
