@@ -13,6 +13,7 @@ module.exports = {
   filterfalse: filterfalse,
   iter: iter,
   map: map,
+  max: max,
   range: range,
   reduce: reduce,
   repeat: repeat,
@@ -152,6 +153,20 @@ function* map(f, ...xss) {
   for(let xs of zip(...xss)) {
     yield f(...xs);
   }
+}
+
+function max(it, keyfunc) {
+  let _max = -Infinity;
+  let res = undefined;
+  let _x;
+  for (let x of it) {
+    _x = keyfunc ? keyfunc(x) : x;
+    if (_x > _max) {
+      _max = _x;
+      res = x;
+    }
+  }
+  return res;
 }
 
 function* range(start, stop, step = 1) {
