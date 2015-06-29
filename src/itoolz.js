@@ -156,13 +156,13 @@ function* map(f, ...xss) {
 }
 
 function max(it, keyfunc) {
-  let _max = -Infinity;
-  let res = undefined;
-  let _x;
+  let maxValue = -Infinity;
+  let res;
+  let xValue;
   for (let x of it) {
-    _x = keyfunc ? keyfunc(x) : x;
-    if (_x > _max) {
-      _max = _x;
+    xValue = keyfunc ? keyfunc(x) : x;
+    if (xValue > maxValue) {
+      maxValue = xValue;
       res = x;
     }
   }

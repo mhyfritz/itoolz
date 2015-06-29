@@ -1035,9 +1035,9 @@ function map(f) {
 }
 
 function max(it, keyfunc) {
-  var _max = -Infinity;
+  var maxValue = -Infinity;
   var res = undefined;
-  var _x = undefined;
+  var xValue = undefined;
   var _iteratorNormalCompletion15 = true;
   var _didIteratorError15 = false;
   var _iteratorError15 = undefined;
@@ -1046,9 +1046,9 @@ function max(it, keyfunc) {
     for (var _iterator15 = it[Symbol.iterator](), _step15; !(_iteratorNormalCompletion15 = (_step15 = _iterator15.next()).done); _iteratorNormalCompletion15 = true) {
       var x = _step15.value;
 
-      _x = keyfunc ? keyfunc(x) : x;
-      if (_x > _max) {
-        _max = _x;
+      xValue = keyfunc ? keyfunc(x) : x;
+      if (xValue > maxValue) {
+        maxValue = xValue;
         res = x;
       }
     }
