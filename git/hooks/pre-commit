@@ -4,7 +4,7 @@ set -x
 
 eslint src/*.js
 
-babel-node test/*.js | faucet
+make test
 
 make
 git add dist
