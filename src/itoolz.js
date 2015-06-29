@@ -73,9 +73,9 @@ function* chainFromIterable(it) {
 }
 
 function* compress(it, select) {
-  for (let xs of zip(it, select)) {
-    if (xs[1]) {
-      yield xs[0];
+  for (let [val, sel] of zip(it, select)) {
+    if (sel) {
+      yield val;
     }
   }
 }

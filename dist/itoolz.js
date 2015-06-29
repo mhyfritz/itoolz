@@ -429,7 +429,7 @@ function chainFromIterable(it) {
 }
 
 function compress(it, select) {
-  var _iteratorNormalCompletion8, _didIteratorError8, _iteratorError8, _iterator8, _step8, xs;
+  var _iteratorNormalCompletion8, _didIteratorError8, _iteratorError8, _iterator8, _step8, _step8$value, val, sel;
 
   return regeneratorRuntime.wrap(function compress$(context$1$0) {
     while (1) switch (context$1$0.prev = context$1$0.next) {
@@ -442,64 +442,66 @@ function compress(it, select) {
 
       case 5:
         if (_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done) {
-          context$1$0.next = 13;
+          context$1$0.next = 15;
           break;
         }
 
-        xs = _step8.value;
+        _step8$value = _slicedToArray(_step8.value, 2);
+        val = _step8$value[0];
+        sel = _step8$value[1];
 
-        if (!xs[1]) {
-          context$1$0.next = 10;
+        if (!sel) {
+          context$1$0.next = 12;
           break;
         }
 
-        context$1$0.next = 10;
-        return xs[0];
+        context$1$0.next = 12;
+        return val;
 
-      case 10:
+      case 12:
         _iteratorNormalCompletion8 = true;
         context$1$0.next = 5;
         break;
 
-      case 13:
-        context$1$0.next = 19;
+      case 15:
+        context$1$0.next = 21;
         break;
 
-      case 15:
-        context$1$0.prev = 15;
+      case 17:
+        context$1$0.prev = 17;
         context$1$0.t0 = context$1$0["catch"](3);
         _didIteratorError8 = true;
         _iteratorError8 = context$1$0.t0;
 
-      case 19:
-        context$1$0.prev = 19;
-        context$1$0.prev = 20;
+      case 21:
+        context$1$0.prev = 21;
+        context$1$0.prev = 22;
 
         if (!_iteratorNormalCompletion8 && _iterator8["return"]) {
           _iterator8["return"]();
         }
 
-      case 22:
-        context$1$0.prev = 22;
+      case 24:
+        context$1$0.prev = 24;
 
         if (!_didIteratorError8) {
-          context$1$0.next = 25;
+          context$1$0.next = 27;
           break;
         }
 
         throw _iteratorError8;
 
-      case 25:
-        return context$1$0.finish(22);
-
-      case 26:
-        return context$1$0.finish(19);
-
       case 27:
+        return context$1$0.finish(24);
+
+      case 28:
+        return context$1$0.finish(21);
+
+      case 29:
       case "end":
         return context$1$0.stop();
     }
-  }, marked0$0[3], this, [[3, 15, 19, 27], [20,, 22, 26]]);
+  }, marked0$0[3], this, [[3, 17, 21, 29], [22,, 24, 28]]);
 }
 
 function count() {
