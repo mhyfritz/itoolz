@@ -57,8 +57,16 @@ test('chain - two seqs - list', function (t) {
 test('chain - two seqs - generator', function (t) {
   t.plan(1);
   let result, expect;
-  function* g() { for (let x of 'ABC') { yield x; } };
-  function* h() { for (let x of 'DEF') { yield x; } };
+  function* g() {
+    for (let x of 'ABC') {
+      yield x;
+    }
+  }
+  function* h() {
+    for (let x of 'DEF') {
+      yield x;
+    }
+  }
   result = itoolz.chain(g(), h());
   result = [...result];
   expect = ['A', 'B', 'C', 'D', 'E', 'F'];
@@ -77,10 +85,41 @@ test('chainFromIterable - two seqs - list', function (t) {
 test('chainFromIterable - two seqs - generator', function (t) {
   t.plan(1);
   let result, expect;
-  function* g() { for (let x of 'ABC') { yield x; } };
-  function* h() { for (let x of 'DEF') { yield x; } };
+  function* g() {
+    for (let x of 'ABC') {
+      yield x;
+    }
+  }
+  function* h() {
+    for (let x of 'DEF') {
+      yield x;
+    }
+  }
   result = itoolz.chainFromIterable([g(), h()]);
   result = [...result];
   expect = ['A', 'B', 'C', 'D', 'E', 'F'];
+  t.deepEqual(result, expect);
+});
+
+test('compress - string', function (t) {
+  t.plan(1);
+  let result, expect;
+  result = itoolz.compress('ABCDEF', [1, 0, 1, 0, 1, 1]);
+  result = [...result];
+  expect = ['A', 'C', 'E', 'F'];
+  t.deepEqual(result, expect);
+});
+
+test('compress - string / generator', function (t) {
+  t.plan(1);
+  let result, expect;
+  function* g() {
+    for (let x of 'ABCDEF') {
+      yield x;
+    }
+  }
+  result = itoolz.compress(g(), [1, 0, 1, 0, 1, 1]);
+  result = [...result];
+  expect = ['A', 'C', 'E', 'F'];
   t.deepEqual(result, expect);
 });
