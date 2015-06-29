@@ -14,6 +14,7 @@ module.exports = {
   iter: iter,
   map: map,
   max: max,
+  min: min,
   range: range,
   reduce: reduce,
   repeat: repeat,
@@ -163,6 +164,20 @@ function max(it, keyfunc) {
     xValue = keyfunc ? keyfunc(x) : x;
     if (xValue > maxValue) {
       maxValue = xValue;
+      res = x;
+    }
+  }
+  return res;
+}
+
+function min(it, keyfunc) {
+  let minValue = Infinity;
+  let res;
+  let xValue;
+  for (let x of it) {
+    xValue = keyfunc ? keyfunc(x) : x;
+    if (xValue < minValue) {
+      minValue = xValue;
       res = x;
     }
   }
