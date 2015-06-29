@@ -36,3 +36,19 @@ test('accumulate - multiply func - generator', function (t) {
   res = [...res];
   t.deepEqual(res, [1, 2, 6, 24, 120]);
 });
+
+test('chain - two seqs - list', function (t) {
+  t.plan(1);
+  var res = itoolz.chain('ABC', 'DEF');
+  res = [...res];
+  t.deepEqual(res, ['A', 'B', 'C', 'D', 'E', 'F']);
+});
+
+test('chain - two seqs - generator', function (t) {
+  t.plan(1);
+  function* g() { for (let x of 'ABC') { yield x; } };
+  function* h() { for (let x of 'DEF') { yield x; } };
+  var res = itoolz.chain(g(), h());
+  res = [...res];
+  t.deepEqual(res, ['A', 'B', 'C', 'D', 'E', 'F']);
+});
