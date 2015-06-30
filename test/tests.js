@@ -303,3 +303,47 @@ test('compress - string / generator', function (t) {
   t.deepEqual(actual, expect);
 });
 // }}}
+
+// {{{ count
+test('count - default params', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = [];
+  for (let x of itoolz.count()) {
+    actual.push(x);
+    if (actual.length === 10) {
+      break;
+    }
+  }
+  expect = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  t.deepEqual(actual, expect);
+});
+
+test('count - non default start', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = [];
+  for (let x of itoolz.count(3)) {
+    actual.push(x);
+    if (actual.length === 10) {
+      break;
+    }
+  }
+  expect = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  t.deepEqual(actual, expect);
+});
+
+test('count - non default params', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = [];
+  for (let x of itoolz.count(1, 3)) {
+    actual.push(x);
+    if (actual.length === 10) {
+      break;
+    }
+  }
+  expect = [1, 4, 7, 10, 13, 16, 19, 22, 25, 28];
+  t.deepEqual(actual, expect);
+});
+// }}}
