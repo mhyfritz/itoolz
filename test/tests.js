@@ -347,3 +347,38 @@ test('count - non default params', function (t) {
   t.deepEqual(actual, expect);
 });
 // }}}
+
+// {{{
+test('cycle - chars - string', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = [];
+  for (let x of itoolz.cycle('ABCD')) {
+    actual.push(x);
+    if (actual.length === 12) {
+      break;
+    }
+  }
+  expect = ['A', 'B', 'C', 'D', 'A', 'B', 'C', 'D', 'A', 'B', 'C', 'D'];
+  t.deepEqual(actual, expect);
+});
+
+test('cycle - chars - generator', function (t) {
+  t.plan(1);
+  let actual, expect;
+  function* g() {
+    for (let x of 'ABCD') {
+      yield x;
+    }
+  }
+  actual = [];
+  for (let x of itoolz.cycle(g())) {
+    actual.push(x);
+    if (actual.length === 12) {
+      break;
+    }
+  }
+  expect = ['A', 'B', 'C', 'D', 'A', 'B', 'C', 'D', 'A', 'B', 'C', 'D'];
+  t.deepEqual(actual, expect);
+});
+// }}}
