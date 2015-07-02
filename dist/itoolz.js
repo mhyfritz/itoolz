@@ -1516,7 +1516,7 @@ function zip() {
     xss[_key3] = arguments[_key3];
   }
 
-  var its, isUndefined, ret;
+  var its, isNotUndefined, ret;
   return regeneratorRuntime.wrap(function zip$(context$1$0) {
     while (1) switch (context$1$0.prev = context$1$0.next) {
       case 0:
@@ -1524,7 +1524,7 @@ function zip() {
           return xs[Symbol.iterator] ? xs[Symbol.iterator]() : xs;
         });
 
-        isUndefined = function isUndefined(x) {
+        isNotUndefined = function isNotUndefined(x) {
           return x !== undefined;
         };
 
@@ -1536,7 +1536,7 @@ function zip() {
 
         ret = its.map(next);
 
-        if (!all(ret, isUndefined)) {
+        if (!all(ret, isNotUndefined)) {
           context$1$0.next = 9;
           break;
         }

@@ -238,10 +238,10 @@ export function* zip(...xss) {
   let its = xss.map(function (xs) {
     return xs[Symbol.iterator] ? xs[Symbol.iterator]() : xs;
   });
-  let isUndefined = x => x !== undefined;
+  let isNotUndefined = x => x !== undefined;
   while (its) {
     let ret = its.map(next);
-    if (all(ret, isUndefined)) {
+    if (all(ret, isNotUndefined)) {
       yield ret;
     } else {
       return;
