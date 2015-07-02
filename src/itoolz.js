@@ -1,4 +1,4 @@
-export  {
+export {
   accumulate,
   all,
   any,
@@ -27,10 +27,12 @@ export  {
 
 function* accumulate(xs, f = add) {
   var it = iter(xs);
-  var acc = it.next().value;
-  if (acc === undefined) {
+  var head = it.next();
+  var acc;
+  if (head.done) {
     return;
   }
+  acc = head.value;
   yield acc;
   for (let x of it) {
     acc = f(acc, x);
