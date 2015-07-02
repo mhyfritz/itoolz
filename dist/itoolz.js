@@ -929,9 +929,9 @@ function iter(obj, sentinel) {
         break;
 
       case 4:
-        return context$1$0.delegateYield(regeneratorRuntime.mark(function g() {
+        return context$1$0.delegateYield(regeneratorRuntime.mark(function callee$1$0() {
           var x;
-          return regeneratorRuntime.wrap(function g$(context$2$0) {
+          return regeneratorRuntime.wrap(function callee$1$0$(context$2$0) {
             while (1) switch (context$2$0.prev = context$2$0.next) {
               case 0:
                 if (!true) {
@@ -960,7 +960,7 @@ function iter(obj, sentinel) {
               case "end":
                 return context$2$0.stop();
             }
-          }, g, this);
+          }, callee$1$0, this);
         })(), "t1", 5);
 
       case 5:

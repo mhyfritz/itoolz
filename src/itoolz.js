@@ -114,7 +114,7 @@ export function* iter(obj, sentinel) {
   if (sentinel === undefined) {
     yield* obj[Symbol.iterator] ? obj[Symbol.iterator]() : obj;
   } else {
-    yield* (function* g() {
+    yield* (function* () {
       while (true) { //eslint-disable-line no-constant-condition
         let x = obj();
         if (x === sentinel) {
