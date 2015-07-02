@@ -26,9 +26,9 @@ export {
 };
 
 function* accumulate(xs, f = add) {
-  var it = iter(xs);
-  var head = it.next();
-  var acc;
+  let it = iter(xs);
+  let head = it.next();
+  let acc;
   if (head.done) {
     return;
   }
@@ -89,7 +89,7 @@ function* count(start = 0, step = 1) {
 }
 
 function* cycle(it) {
-  var xs = [];
+  let xs = [];
   for (let x of it) {
     yield x;
     xs.push(x);
@@ -102,8 +102,8 @@ function* cycle(it) {
 }
 
 function* dropwhile(predicate, xs) {
-  var x;
-  var it = iter(xs);
+  let x;
+  let it = iter(xs);
   for (x of it) {
     if (!predicate(x)) {
       yield x;
@@ -205,8 +205,8 @@ function* range(start, stop, step = 1) {
 }
 
 function reduce(f, xs, init) {
-  var it = iter(xs);
-  var acc;
+  let it = iter(xs);
+  let acc;
   if (init !== undefined) {
     acc = init;
   } else {
@@ -232,8 +232,8 @@ function* slice(it, start, stop, step = 1) {
     stop = start;
     start = 0;
   }
-  var is = range(start, stop, step);
-  var nexti = is.next().value;
+  let is = range(start, stop, step);
+  let nexti = is.next().value;
   for (let [i, x] of enumerate(it)) {
     if (nexti === undefined) {
       break;
@@ -262,7 +262,7 @@ function* takewhile(predicate, it) {
 }
 
 function* zip(...xss) {
-  var its = xss.map(function (xs) {
+  let its = xss.map(function (xs) {
     return xs[Symbol.iterator] ? xs[Symbol.iterator]() : xs;
   });
   let isUndefined = x => x !== undefined;

@@ -45,82 +45,83 @@ function accumulate(xs) {
       case 0:
         it = iter(xs);
         head = it.next();
+        acc = undefined;
 
         if (!head.done) {
-          context$1$0.next = 4;
+          context$1$0.next = 5;
           break;
         }
 
         return context$1$0.abrupt("return");
 
-      case 4:
+      case 5:
         acc = head.value;
-        context$1$0.next = 7;
+        context$1$0.next = 8;
         return acc;
 
-      case 7:
+      case 8:
         _iteratorNormalCompletion = true;
         _didIteratorError = false;
         _iteratorError = undefined;
-        context$1$0.prev = 10;
+        context$1$0.prev = 11;
         _iterator = it[Symbol.iterator]();
 
-      case 12:
+      case 13:
         if (_iteratorNormalCompletion = (_step = _iterator.next()).done) {
-          context$1$0.next = 20;
+          context$1$0.next = 21;
           break;
         }
 
         x = _step.value;
 
         acc = f(acc, x);
-        context$1$0.next = 17;
+        context$1$0.next = 18;
         return acc;
 
-      case 17:
+      case 18:
         _iteratorNormalCompletion = true;
-        context$1$0.next = 12;
+        context$1$0.next = 13;
         break;
 
-      case 20:
-        context$1$0.next = 26;
+      case 21:
+        context$1$0.next = 27;
         break;
 
-      case 22:
-        context$1$0.prev = 22;
-        context$1$0.t0 = context$1$0["catch"](10);
+      case 23:
+        context$1$0.prev = 23;
+        context$1$0.t0 = context$1$0["catch"](11);
         _didIteratorError = true;
         _iteratorError = context$1$0.t0;
 
-      case 26:
-        context$1$0.prev = 26;
+      case 27:
         context$1$0.prev = 27;
+        context$1$0.prev = 28;
 
         if (!_iteratorNormalCompletion && _iterator["return"]) {
           _iterator["return"]();
         }
 
-      case 29:
-        context$1$0.prev = 29;
+      case 30:
+        context$1$0.prev = 30;
 
         if (!_didIteratorError) {
-          context$1$0.next = 32;
+          context$1$0.next = 33;
           break;
         }
 
         throw _iteratorError;
 
-      case 32:
-        return context$1$0.finish(29);
-
       case 33:
-        return context$1$0.finish(26);
+        return context$1$0.finish(30);
 
       case 34:
+        return context$1$0.finish(27);
+
+      case 35:
       case "end":
         return context$1$0.stop();
     }
-  }, marked0$0[0], this, [[10, 22, 26, 34], [27,, 29, 33]]);
+  }, marked0$0[0], this, [[11, 23, 27, 35], [28,, 30, 34]]);
 }
 
 function all(it) {
@@ -675,132 +676,133 @@ function dropwhile(predicate, xs) {
   return regeneratorRuntime.wrap(function dropwhile$(context$1$0) {
     while (1) switch (context$1$0.prev = context$1$0.next) {
       case 0:
+        x = undefined;
         it = iter(xs);
         _iteratorNormalCompletion11 = true;
         _didIteratorError11 = false;
         _iteratorError11 = undefined;
-        context$1$0.prev = 4;
+        context$1$0.prev = 5;
         _iterator11 = it[Symbol.iterator]();
 
-      case 6:
+      case 7:
         if (_iteratorNormalCompletion11 = (_step11 = _iterator11.next()).done) {
-          context$1$0.next = 15;
+          context$1$0.next = 16;
           break;
         }
 
         x = _step11.value;
 
         if (predicate(x)) {
-          context$1$0.next = 12;
+          context$1$0.next = 13;
           break;
         }
 
-        context$1$0.next = 11;
+        context$1$0.next = 12;
         return x;
 
-      case 11:
-        return context$1$0.abrupt("break", 15);
-
       case 12:
+        return context$1$0.abrupt("break", 16);
+
+      case 13:
         _iteratorNormalCompletion11 = true;
-        context$1$0.next = 6;
+        context$1$0.next = 7;
         break;
 
-      case 15:
-        context$1$0.next = 21;
+      case 16:
+        context$1$0.next = 22;
         break;
 
-      case 17:
-        context$1$0.prev = 17;
-        context$1$0.t0 = context$1$0["catch"](4);
+      case 18:
+        context$1$0.prev = 18;
+        context$1$0.t0 = context$1$0["catch"](5);
         _didIteratorError11 = true;
         _iteratorError11 = context$1$0.t0;
 
-      case 21:
-        context$1$0.prev = 21;
+      case 22:
         context$1$0.prev = 22;
+        context$1$0.prev = 23;
 
         if (!_iteratorNormalCompletion11 && _iterator11["return"]) {
           _iterator11["return"]();
         }
 
-      case 24:
-        context$1$0.prev = 24;
+      case 25:
+        context$1$0.prev = 25;
 
         if (!_didIteratorError11) {
-          context$1$0.next = 27;
+          context$1$0.next = 28;
           break;
         }
 
         throw _iteratorError11;
 
-      case 27:
-        return context$1$0.finish(24);
-
       case 28:
-        return context$1$0.finish(21);
+        return context$1$0.finish(25);
 
       case 29:
+        return context$1$0.finish(22);
+
+      case 30:
         _iteratorNormalCompletion12 = true;
         _didIteratorError12 = false;
         _iteratorError12 = undefined;
-        context$1$0.prev = 32;
+        context$1$0.prev = 33;
         _iterator12 = it[Symbol.iterator]();
 
-      case 34:
+      case 35:
         if (_iteratorNormalCompletion12 = (_step12 = _iterator12.next()).done) {
-          context$1$0.next = 41;
+          context$1$0.next = 42;
           break;
         }
 
         x = _step12.value;
-        context$1$0.next = 38;
+        context$1$0.next = 39;
         return x;
 
-      case 38:
+      case 39:
         _iteratorNormalCompletion12 = true;
-        context$1$0.next = 34;
+        context$1$0.next = 35;
         break;
 
-      case 41:
-        context$1$0.next = 47;
+      case 42:
+        context$1$0.next = 48;
         break;
 
-      case 43:
-        context$1$0.prev = 43;
-        context$1$0.t1 = context$1$0["catch"](32);
+      case 44:
+        context$1$0.prev = 44;
+        context$1$0.t1 = context$1$0["catch"](33);
         _didIteratorError12 = true;
         _iteratorError12 = context$1$0.t1;
 
-      case 47:
-        context$1$0.prev = 47;
+      case 48:
         context$1$0.prev = 48;
+        context$1$0.prev = 49;
 
         if (!_iteratorNormalCompletion12 && _iterator12["return"]) {
           _iterator12["return"]();
         }
 
-      case 50:
-        context$1$0.prev = 50;
+      case 51:
+        context$1$0.prev = 51;
 
         if (!_didIteratorError12) {
-          context$1$0.next = 53;
+          context$1$0.next = 54;
           break;
         }
 
         throw _iteratorError12;
 
-      case 53:
-        return context$1$0.finish(50);
-
       case 54:
-        return context$1$0.finish(47);
+        return context$1$0.finish(51);
 
       case 55:
+        return context$1$0.finish(48);
+
+      case 56:
       case "end":
         return context$1$0.stop();
     }
-  }, marked0$0[6], this, [[4, 17, 21, 29], [22,, 24, 28], [32, 43, 47, 55], [48,, 50, 54]]);
+  }, marked0$0[6], this, [[5, 18, 22, 30], [23,, 25, 29], [33, 44, 48, 56], [49,, 51, 55]]);
 }
 
 function enumerate(xs) {
@@ -1202,7 +1204,7 @@ function range(start, stop) {
 
 function reduce(f, xs, init) {
   var it = iter(xs);
-  var acc;
+  var acc = undefined;
   if (init !== undefined) {
     acc = init;
   } else {
