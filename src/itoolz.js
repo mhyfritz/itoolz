@@ -1,31 +1,4 @@
-export {
-  accumulate,
-  all,
-  any,
-  chain,
-  chainFromIterable,
-  compress,
-  count,
-  cycle,
-  dropwhile,
-  enumerate,
-  filter,
-  filterfalse,
-  iter,
-  map,
-  max,
-  min,
-  next,
-  range,
-  reduce,
-  repeat,
-  slice,
-  starmap,
-  takewhile,
-  zip
-};
-
-function* accumulate(xs, f = add) {
+export function* accumulate(xs, f = add) {
   let it = iter(xs);
   let head = it.next();
   let acc;
@@ -40,7 +13,7 @@ function* accumulate(xs, f = add) {
   }
 }
 
-function all(it, f = Boolean) {
+export function all(it, f = Boolean) {
   for (let x of it) {
     if (!f(x)) {
       return false;
@@ -49,7 +22,7 @@ function all(it, f = Boolean) {
   return true;
 }
 
-function any(it, f = Boolean) {
+export function any(it, f = Boolean) {
   for (let x of it) {
     if (f(x)) {
       return true;
@@ -58,7 +31,7 @@ function any(it, f = Boolean) {
   return false;
 }
 
-function* chain(...its) {
+export function* chain(...its) {
   for (let it of its) {
     for (let x of it) {
       yield x;
@@ -66,7 +39,7 @@ function* chain(...its) {
   }
 }
 
-function* chainFromIterable(it) {
+export function* chainFromIterable(it) {
   for (let xs of it) {
     for (let x of xs) {
       yield x;
@@ -74,7 +47,7 @@ function* chainFromIterable(it) {
   }
 }
 
-function* compress(it, select) {
+export function* compress(it, select) {
   for (let [val, sel] of zip(it, select)) {
     if (sel) {
       yield val;
@@ -82,13 +55,13 @@ function* compress(it, select) {
   }
 }
 
-function* count(start = 0, step = 1) {
+export function* count(start = 0, step = 1) {
   for (let i = start; ; i += step) {
     yield i;
   }
 }
 
-function* cycle(it) {
+export function* cycle(it) {
   let xs = [];
   for (let x of it) {
     yield x;
@@ -101,7 +74,7 @@ function* cycle(it) {
   }
 }
 
-function* dropwhile(predicate, xs) {
+export function* dropwhile(predicate, xs) {
   let x;
   let it = iter(xs);
   for (x of it) {
@@ -115,11 +88,11 @@ function* dropwhile(predicate, xs) {
   }
 }
 
-function* enumerate(xs, start = 0) {
+export function* enumerate(xs, start = 0) {
   yield* zip(count(start), xs);
 }
 
-function* filter(predicate, it) {
+export function* filter(predicate, it) {
   if (!predicate) {
     predicate = Boolean;
   }
@@ -130,14 +103,14 @@ function* filter(predicate, it) {
   }
 }
 
-function* filterfalse(predicate, it) {
+export function* filterfalse(predicate, it) {
   if (!predicate) {
     predicate = Boolean;
   }
   yield* filter(x => !predicate(x), it);
 }
 
-function* iter(obj, sentinel) {
+export function* iter(obj, sentinel) {
   if (sentinel === undefined) {
     yield* obj[Symbol.iterator] ? obj[Symbol.iterator]() : obj;
   } else {
@@ -153,13 +126,13 @@ function* iter(obj, sentinel) {
   }
 }
 
-function* map(f, ...xss) {
+export function* map(f, ...xss) {
   for(let xs of zip(...xss)) {
     yield f(...xs);
   }
 }
 
-function max(it, keyfunc) {
+export function max(it, keyfunc) {
   let maxValue = -Infinity;
   let res;
   let xValue;
@@ -173,7 +146,7 @@ function max(it, keyfunc) {
   return res;
 }
 
-function min(it, keyfunc) {
+export function min(it, keyfunc) {
   let minValue = Infinity;
   let res;
   let xValue;
@@ -187,11 +160,11 @@ function min(it, keyfunc) {
   return res;
 }
 
-function next(it) {
+export function next(it) {
   return it.next().value;
 }
 
-function* range(start, stop, step = 1) {
+export function* range(start, stop, step = 1) {
   if (stop === undefined) {
     stop = start;
     start = 0;
@@ -204,7 +177,7 @@ function* range(start, stop, step = 1) {
   }
 }
 
-function reduce(f, xs, init) {
+export function reduce(f, xs, init) {
   let it = iter(xs);
   let acc;
   if (init !== undefined) {
@@ -218,7 +191,7 @@ function reduce(f, xs, init) {
   return acc;
 }
 
-function* repeat(elem, n) {
+export function* repeat(elem, n) {
   while (true) { //eslint-disable-line no-constant-condition
     if (n !== undefined && n-- === 0) {
       break;
@@ -227,7 +200,7 @@ function* repeat(elem, n) {
   }
 }
 
-function* slice(it, start, stop, step = 1) {
+export function* slice(it, start, stop, step = 1) {
   if (stop === undefined) {
     stop = start;
     start = 0;
@@ -246,13 +219,13 @@ function* slice(it, start, stop, step = 1) {
   return;
 }
 
-function* starmap(f, it) {
+export function* starmap(f, it) {
   for (let xs of it) {
     yield f(...xs);
   }
 }
 
-function* takewhile(predicate, it) {
+export function* takewhile(predicate, it) {
   for (let x of it) {
     if (!predicate(x)) {
       return;
@@ -261,7 +234,7 @@ function* takewhile(predicate, it) {
   }
 }
 
-function* zip(...xss) {
+export function* zip(...xss) {
   let its = xss.map(function (xs) {
     return xs[Symbol.iterator] ? xs[Symbol.iterator]() : xs;
   });
