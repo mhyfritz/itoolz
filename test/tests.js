@@ -348,7 +348,7 @@ test('count - non default params', function (t) {
 });
 // }}}
 
-// {{{
+// {{{ cycle
 test('cycle - chars - string', function (t) {
   t.plan(1);
   let actual, expect;
