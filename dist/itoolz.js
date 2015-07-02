@@ -1,37 +1,39 @@
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 function _slicedToArray(arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }
 
 var marked0$0 = [accumulate, chain, chainFromIterable, compress, count, cycle, dropwhile, enumerate, filter, filterfalse, iter, map, range, repeat, slice, starmap, takewhile, zip].map(regeneratorRuntime.mark);
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i]; return arr2; } else { return Array.from(arr); } }
 
-module.exports = {
-  accumulate: accumulate,
-  all: all,
-  any: any,
-  chain: chain,
-  chainFromIterable: chainFromIterable,
-  compress: compress,
-  count: count,
-  cycle: cycle,
-  dropwhile: dropwhile,
-  enumerate: enumerate,
-  filter: filter,
-  filterfalse: filterfalse,
-  iter: iter,
-  map: map,
-  max: max,
-  min: min,
-  next: next,
-  range: range,
-  reduce: reduce,
-  repeat: repeat,
-  slice: slice,
-  starmap: starmap,
-  takewhile: takewhile,
-  zip: zip
-};
+exports.accumulate = accumulate;
+exports.all = all;
+exports.any = any;
+exports.chain = chain;
+exports.chainFromIterable = chainFromIterable;
+exports.compress = compress;
+exports.count = count;
+exports.cycle = cycle;
+exports.dropwhile = dropwhile;
+exports.enumerate = enumerate;
+exports.filter = filter;
+exports.filterfalse = filterfalse;
+exports.iter = iter;
+exports.map = map;
+exports.max = max;
+exports.min = min;
+exports.next = next;
+exports.range = range;
+exports.reduce = reduce;
+exports.repeat = repeat;
+exports.slice = slice;
+exports.starmap = starmap;
+exports.takewhile = takewhile;
+exports.zip = zip;
 
 function accumulate(xs) {
   var f = arguments[1] === undefined ? add : arguments[1];
