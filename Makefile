@@ -17,6 +17,6 @@ test:
 	babel-node test/*.js | faucet
 
 lint:
-	eslint src/*.js
+	eslint src/*.js test/*.js
 
 check: lint test
