@@ -6,6 +6,7 @@
   },
   "rules": {
     "strict": 0,
-    "no-use-before-define": [2, "nofunc"]
+    "no-use-before-define": [2, "nofunc"],
+    "quotes": [2, "single"]
   }
 }
