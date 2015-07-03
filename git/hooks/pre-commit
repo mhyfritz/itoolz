@@ -1,10 +1,19 @@
 #! /usr/bin/env bash
 
-set -x
+check_return_value() {
+    if [ $1 -ne 0 ]; then
+        echo "ERROR. Refusing to commit."
+        exit 1
+    fi
+}
 
-eslint src/*.js
+make lint
+check_return_value $?
 
 make test
+check_return_value $?
 
 make
+check_return_value $?
 git add dist
+check_return_value $?
