@@ -1,4 +1,4 @@
-let itoolz = require('../dist/itoolz');
+import * as itoolz from '../src/itoolz';
 let test = require('tape');
 
 // {{{ accumulate
