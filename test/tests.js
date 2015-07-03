@@ -382,3 +382,28 @@ test('cycle - chars - generator', function (t) {
   t.deepEqual(actual, expect);
 });
 // }}}
+
+// {{{ enumerate
+test('enumerate - chars - default start - string', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = itoolz.enumerate('foobar');
+  actual = [...actual];
+  expect = [[0, 'f'], [1, 'o'], [2, 'o'], [3, 'b'], [4, 'a'], [5, 'r']];
+  t.deepEqual(actual, expect);
+});
+
+test('enumerate - chars - default start - generator', function (t) {
+  t.plan(1);
+  let actual, expect;
+  function* g() {
+    for (let x of 'foobar') {
+      yield x;
+    }
+  }
+  actual = itoolz.enumerate(g());
+  actual = [...actual];
+  expect = [[0, 'f'], [1, 'o'], [2, 'o'], [3, 'b'], [4, 'a'], [5, 'r']];
+  t.deepEqual(actual, expect);
+});
+// }}}
