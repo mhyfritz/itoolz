@@ -407,3 +407,53 @@ test('enumerate - chars - default start - generator', function (t) {
   t.deepEqual(actual, expect);
 });
 // }}}
+
+// {{{ filter
+test('filter - odd - list', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = itoolz.filter(x => x % 2 === 1, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  actual = [...actual];
+  expect = [1, 3, 5, 7, 9];
+  t.deepEqual(actual, expect);
+});
+
+test('filter - odd - generator', function (t) {
+  t.plan(1);
+  let actual, expect;
+  function* g() {
+    for (let x = 0; x <= 10; x += 1) {
+      yield x;
+    }
+  }
+  actual = itoolz.filter(x => x % 2 === 1, g());
+  actual = [...actual];
+  expect = [1, 3, 5, 7, 9];
+  t.deepEqual(actual, expect);
+});
+// }}}
+
+// {{{ filterfalse
+test('filterfalse - odd - list', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = itoolz.filterfalse(x => x % 2 === 1, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  actual = [...actual];
+  expect = [0, 2, 4, 6, 8, 10];
+  t.deepEqual(actual, expect);
+});
+
+test('filterfalse - odd - generator', function (t) {
+  t.plan(1);
+  let actual, expect;
+  function* g() {
+    for (let x = 0; x <= 10; x += 1) {
+      yield x;
+    }
+  }
+  actual = itoolz.filterfalse(x => x % 2 === 1, g());
+  actual = [...actual];
+  expect = [0, 2, 4, 6, 8, 10];
+  t.deepEqual(actual, expect);
+});
+// }}}
