@@ -457,3 +457,28 @@ test('filterfalse - odd - generator', function (t) {
   t.deepEqual(actual, expect);
 });
 // }}}
+
+// {{{ map
+test('map - squares - list', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = itoolz.map(x => x * x, [0, 1, 2, 3, 4, 5]);
+  actual = [...actual];
+  expect = [0, 1, 4, 9, 16, 25];
+  t.deepEqual(actual, expect);
+});
+
+test('map - squares - generator', function (t) {
+  t.plan(1);
+  let actual, expect;
+  function* g() {
+    for (let x of [0, 1, 2, 3, 4, 5]) {
+      yield x;
+    }
+  }
+  actual = itoolz.map(x => x * x, g());
+  actual = [...actual];
+  expect = [0, 1, 4, 9, 16, 25];
+  t.deepEqual(actual, expect);
+});
+// }}}
