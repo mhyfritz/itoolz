@@ -482,3 +482,47 @@ test('map - squares - generator', function (t) {
   t.deepEqual(actual, expect);
 });
 // }}}
+
+// {{{ max
+test('max - ints - list', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = itoolz.max([-10, -1, 0, 10, 1, 2, 3]);
+  expect = 10;
+  t.equal(actual, expect);
+});
+
+test('max - ints - generator', function (t) {
+  t.plan(1);
+  let actual, expect;
+  function* g() {
+    for (let x of [-10, -1, 0, 10, 1, 2, 3]) {
+      yield x;
+    }
+  }
+  actual = itoolz.max(g());
+  expect = 10;
+  t.equal(actual, expect);
+});
+
+test('max - ints - Infinity - list', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = itoolz.max([-Infinity, -1, 0, Infinity, 1, Number.MAX_VALUE]);
+  expect = Infinity;
+  t.equal(actual, expect);
+});
+
+test('max - ints - Infinity - generator', function (t) {
+  t.plan(1);
+  let actual, expect;
+  function* g() {
+    for (let x of [-Infinity, -1, 0, Infinity, 1, Number.MAX_VALUE]) {
+      yield x;
+    }
+  }
+  actual = itoolz.max(g());
+  expect = Infinity;
+  t.equal(actual, expect);
+});
+// }}}
