@@ -526,3 +526,47 @@ test('max - ints - Infinity - generator', function (t) {
   t.equal(actual, expect);
 });
 // }}}
+
+// {{{ min
+test('min - ints - list', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = itoolz.min([-10, -1, 0, 10, 1, 2, 3]);
+  expect = -10;
+  t.equal(actual, expect);
+});
+
+test('min - ints - generator', function (t) {
+  t.plan(1);
+  let actual, expect;
+  function* g() {
+    for (let x of [-10, -1, 0, 10, 1, 2, 3]) {
+      yield x;
+    }
+  }
+  actual = itoolz.min(g());
+  expect = -10;
+  t.equal(actual, expect);
+});
+
+test('min - ints - Infinity - list', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = itoolz.min([Number.MIN_VALUE, -Infinity, -1, 0, 1, Infinity]);
+  expect = -Infinity;
+  t.equal(actual, expect);
+});
+
+test('min - ints - Infinity - generator', function (t) {
+  t.plan(1);
+  let actual, expect;
+  function* g() {
+    for (let x of [Number.MIN_VALUE, -Infinity, -1, 0, 1, Infinity]) {
+      yield x;
+    }
+  }
+  actual = itoolz.min(g());
+  expect = -Infinity;
+  t.equal(actual, expect);
+});
+// }}}
