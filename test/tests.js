@@ -570,3 +570,23 @@ test('min - ints - Infinity - generator', function (t) {
   t.equal(actual, expect);
 });
 // }}}
+
+// {{{ range
+test('range - default start and step', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = itoolz.range(10);
+  actual = [...actual];
+  expect = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  t.deepEqual(actual, expect);
+});
+
+test('range - non-default start and step', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = itoolz.range(5, 20, 3);
+  actual = [...actual];
+  expect = [5, 8, 11, 14, 17];
+  t.deepEqual(actual, expect);
+});
+// }}}
