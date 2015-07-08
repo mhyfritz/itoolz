@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
 });
 exports.accumulate = accumulate;
@@ -24,13 +24,14 @@ exports.range = range;
 exports.reduce = reduce;
 exports.repeat = repeat;
 exports.slice = slice;
+exports.reversed = reversed;
 exports.starmap = starmap;
 exports.takewhile = takewhile;
 exports.zip = zip;
 
-function _slicedToArray(arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }
+function _slicedToArray(arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i['return']) _i['return'](); } finally { if (_d) throw _e; } } return _arr; } else { throw new TypeError('Invalid attempt to destructure non-iterable instance'); } }
 
-var marked0$0 = [accumulate, chain, chainFromIterable, compress, count, cycle, dropwhile, enumerate, filter, filterfalse, iter, map, range, repeat, slice, starmap, takewhile, zip].map(regeneratorRuntime.mark);
+var marked0$0 = [accumulate, chain, chainFromIterable, compress, count, cycle, dropwhile, enumerate, filter, filterfalse, iter, map, range, repeat, slice, reversed, starmap, takewhile, zip].map(regeneratorRuntime.mark);
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i]; return arr2; } else { return Array.from(arr); } }
 
@@ -51,7 +52,7 @@ function accumulate(xs) {
           break;
         }
 
-        return context$1$0.abrupt("return");
+        return context$1$0.abrupt('return');
 
       case 5:
         acc = head.value;
@@ -88,7 +89,7 @@ function accumulate(xs) {
 
       case 23:
         context$1$0.prev = 23;
-        context$1$0.t0 = context$1$0["catch"](11);
+        context$1$0.t0 = context$1$0['catch'](11);
         _didIteratorError = true;
         _iteratorError = context$1$0.t0;
 
@@ -96,8 +97,8 @@ function accumulate(xs) {
         context$1$0.prev = 27;
         context$1$0.prev = 28;
 
-        if (!_iteratorNormalCompletion && _iterator["return"]) {
-          _iterator["return"]();
+        if (!_iteratorNormalCompletion && _iterator['return']) {
+          _iterator['return']();
         }
 
       case 30:
@@ -117,7 +118,7 @@ function accumulate(xs) {
         return context$1$0.finish(27);
 
       case 35:
-      case "end":
+      case 'end':
         return context$1$0.stop();
     }
   }, marked0$0[0], this, [[11, 23, 27, 35], [28,, 30, 34]]);
@@ -142,8 +143,8 @@ function all(it) {
     _iteratorError2 = err;
   } finally {
     try {
-      if (!_iteratorNormalCompletion2 && _iterator2["return"]) {
-        _iterator2["return"]();
+      if (!_iteratorNormalCompletion2 && _iterator2['return']) {
+        _iterator2['return']();
       }
     } finally {
       if (_didIteratorError2) {
@@ -174,8 +175,8 @@ function any(it) {
     _iteratorError3 = err;
   } finally {
     try {
-      if (!_iteratorNormalCompletion3 && _iterator3["return"]) {
-        _iterator3["return"]();
+      if (!_iteratorNormalCompletion3 && _iterator3['return']) {
+        _iterator3['return']();
       }
     } finally {
       if (_didIteratorError3) {
@@ -237,7 +238,7 @@ function chain() {
 
       case 21:
         context$1$0.prev = 21;
-        context$1$0.t0 = context$1$0["catch"](10);
+        context$1$0.t0 = context$1$0['catch'](10);
         _didIteratorError5 = true;
         _iteratorError5 = context$1$0.t0;
 
@@ -245,8 +246,8 @@ function chain() {
         context$1$0.prev = 25;
         context$1$0.prev = 26;
 
-        if (!_iteratorNormalCompletion5 && _iterator5["return"]) {
-          _iterator5["return"]();
+        if (!_iteratorNormalCompletion5 && _iterator5['return']) {
+          _iterator5['return']();
         }
 
       case 28:
@@ -276,7 +277,7 @@ function chain() {
 
       case 38:
         context$1$0.prev = 38;
-        context$1$0.t1 = context$1$0["catch"](3);
+        context$1$0.t1 = context$1$0['catch'](3);
         _didIteratorError4 = true;
         _iteratorError4 = context$1$0.t1;
 
@@ -284,8 +285,8 @@ function chain() {
         context$1$0.prev = 42;
         context$1$0.prev = 43;
 
-        if (!_iteratorNormalCompletion4 && _iterator4["return"]) {
-          _iterator4["return"]();
+        if (!_iteratorNormalCompletion4 && _iterator4['return']) {
+          _iterator4['return']();
         }
 
       case 45:
@@ -305,7 +306,7 @@ function chain() {
         return context$1$0.finish(42);
 
       case 50:
-      case "end":
+      case 'end':
         return context$1$0.stop();
     }
   }, marked0$0[1], this, [[3, 38, 42, 50], [10, 21, 25, 33], [26,, 28, 32], [43,, 45, 49]]);
@@ -357,7 +358,7 @@ function chainFromIterable(it) {
 
       case 21:
         context$1$0.prev = 21;
-        context$1$0.t0 = context$1$0["catch"](10);
+        context$1$0.t0 = context$1$0['catch'](10);
         _didIteratorError7 = true;
         _iteratorError7 = context$1$0.t0;
 
@@ -365,8 +366,8 @@ function chainFromIterable(it) {
         context$1$0.prev = 25;
         context$1$0.prev = 26;
 
-        if (!_iteratorNormalCompletion7 && _iterator7["return"]) {
-          _iterator7["return"]();
+        if (!_iteratorNormalCompletion7 && _iterator7['return']) {
+          _iterator7['return']();
         }
 
       case 28:
@@ -396,7 +397,7 @@ function chainFromIterable(it) {
 
       case 38:
         context$1$0.prev = 38;
-        context$1$0.t1 = context$1$0["catch"](3);
+        context$1$0.t1 = context$1$0['catch'](3);
         _didIteratorError6 = true;
         _iteratorError6 = context$1$0.t1;
 
@@ -404,8 +405,8 @@ function chainFromIterable(it) {
         context$1$0.prev = 42;
         context$1$0.prev = 43;
 
-        if (!_iteratorNormalCompletion6 && _iterator6["return"]) {
-          _iterator6["return"]();
+        if (!_iteratorNormalCompletion6 && _iterator6['return']) {
+          _iterator6['return']();
         }
 
       case 45:
@@ -425,7 +426,7 @@ function chainFromIterable(it) {
         return context$1$0.finish(42);
 
       case 50:
-      case "end":
+      case 'end':
         return context$1$0.stop();
     }
   }, marked0$0[2], this, [[3, 38, 42, 50], [10, 21, 25, 33], [26,, 28, 32], [43,, 45, 49]]);
@@ -472,7 +473,7 @@ function compress(it, select) {
 
       case 17:
         context$1$0.prev = 17;
-        context$1$0.t0 = context$1$0["catch"](3);
+        context$1$0.t0 = context$1$0['catch'](3);
         _didIteratorError8 = true;
         _iteratorError8 = context$1$0.t0;
 
@@ -480,8 +481,8 @@ function compress(it, select) {
         context$1$0.prev = 21;
         context$1$0.prev = 22;
 
-        if (!_iteratorNormalCompletion8 && _iterator8["return"]) {
-          _iterator8["return"]();
+        if (!_iteratorNormalCompletion8 && _iterator8['return']) {
+          _iterator8['return']();
         }
 
       case 24:
@@ -501,7 +502,7 @@ function compress(it, select) {
         return context$1$0.finish(21);
 
       case 29:
-      case "end":
+      case 'end':
         return context$1$0.stop();
     }
   }, marked0$0[3], this, [[3, 17, 21, 29], [22,, 24, 28]]);
@@ -526,7 +527,7 @@ function count() {
         break;
 
       case 6:
-      case "end":
+      case 'end':
         return context$1$0.stop();
     }
   }, marked0$0[4], this);
@@ -569,7 +570,7 @@ function cycle(it) {
 
       case 16:
         context$1$0.prev = 16;
-        context$1$0.t0 = context$1$0["catch"](4);
+        context$1$0.t0 = context$1$0['catch'](4);
         _didIteratorError9 = true;
         _iteratorError9 = context$1$0.t0;
 
@@ -577,8 +578,8 @@ function cycle(it) {
         context$1$0.prev = 20;
         context$1$0.prev = 21;
 
-        if (!_iteratorNormalCompletion9 && _iterator9["return"]) {
-          _iterator9["return"]();
+        if (!_iteratorNormalCompletion9 && _iterator9['return']) {
+          _iterator9['return']();
         }
 
       case 23:
@@ -630,7 +631,7 @@ function cycle(it) {
 
       case 43:
         context$1$0.prev = 43;
-        context$1$0.t1 = context$1$0["catch"](32);
+        context$1$0.t1 = context$1$0['catch'](32);
         _didIteratorError10 = true;
         _iteratorError10 = context$1$0.t1;
 
@@ -638,8 +639,8 @@ function cycle(it) {
         context$1$0.prev = 47;
         context$1$0.prev = 48;
 
-        if (!_iteratorNormalCompletion10 && _iterator10["return"]) {
-          _iterator10["return"]();
+        if (!_iteratorNormalCompletion10 && _iterator10['return']) {
+          _iterator10['return']();
         }
 
       case 50:
@@ -663,7 +664,7 @@ function cycle(it) {
         break;
 
       case 57:
-      case "end":
+      case 'end':
         return context$1$0.stop();
     }
   }, marked0$0[5], this, [[4, 16, 20, 28], [21,, 23, 27], [32, 43, 47, 55], [48,, 50, 54]]);
@@ -700,7 +701,7 @@ function dropwhile(predicate, xs) {
         return x;
 
       case 12:
-        return context$1$0.abrupt("break", 16);
+        return context$1$0.abrupt('break', 16);
 
       case 13:
         _iteratorNormalCompletion11 = true;
@@ -713,7 +714,7 @@ function dropwhile(predicate, xs) {
 
       case 18:
         context$1$0.prev = 18;
-        context$1$0.t0 = context$1$0["catch"](5);
+        context$1$0.t0 = context$1$0['catch'](5);
         _didIteratorError11 = true;
         _iteratorError11 = context$1$0.t0;
 
@@ -721,8 +722,8 @@ function dropwhile(predicate, xs) {
         context$1$0.prev = 22;
         context$1$0.prev = 23;
 
-        if (!_iteratorNormalCompletion11 && _iterator11["return"]) {
-          _iterator11["return"]();
+        if (!_iteratorNormalCompletion11 && _iterator11['return']) {
+          _iterator11['return']();
         }
 
       case 25:
@@ -769,7 +770,7 @@ function dropwhile(predicate, xs) {
 
       case 44:
         context$1$0.prev = 44;
-        context$1$0.t1 = context$1$0["catch"](33);
+        context$1$0.t1 = context$1$0['catch'](33);
         _didIteratorError12 = true;
         _iteratorError12 = context$1$0.t1;
 
@@ -777,8 +778,8 @@ function dropwhile(predicate, xs) {
         context$1$0.prev = 48;
         context$1$0.prev = 49;
 
-        if (!_iteratorNormalCompletion12 && _iterator12["return"]) {
-          _iterator12["return"]();
+        if (!_iteratorNormalCompletion12 && _iterator12['return']) {
+          _iterator12['return']();
         }
 
       case 51:
@@ -798,7 +799,7 @@ function dropwhile(predicate, xs) {
         return context$1$0.finish(48);
 
       case 56:
-      case "end":
+      case 'end':
         return context$1$0.stop();
     }
   }, marked0$0[6], this, [[5, 18, 22, 30], [23,, 25, 29], [33, 44, 48, 56], [49,, 51, 55]]);
@@ -809,10 +810,10 @@ function enumerate(xs) {
   return regeneratorRuntime.wrap(function enumerate$(context$1$0) {
     while (1) switch (context$1$0.prev = context$1$0.next) {
       case 0:
-        return context$1$0.delegateYield(zip(count(start), xs), "t0", 1);
+        return context$1$0.delegateYield(zip(count(start), xs), 't0', 1);
 
       case 1:
-      case "end":
+      case 'end':
         return context$1$0.stop();
     }
   }, marked0$0[7], this);
@@ -860,7 +861,7 @@ function filter(predicate, it) {
 
       case 16:
         context$1$0.prev = 16;
-        context$1$0.t0 = context$1$0["catch"](4);
+        context$1$0.t0 = context$1$0['catch'](4);
         _didIteratorError13 = true;
         _iteratorError13 = context$1$0.t0;
 
@@ -868,8 +869,8 @@ function filter(predicate, it) {
         context$1$0.prev = 20;
         context$1$0.prev = 21;
 
-        if (!_iteratorNormalCompletion13 && _iterator13["return"]) {
-          _iterator13["return"]();
+        if (!_iteratorNormalCompletion13 && _iterator13['return']) {
+          _iterator13['return']();
         }
 
       case 23:
@@ -889,7 +890,7 @@ function filter(predicate, it) {
         return context$1$0.finish(20);
 
       case 28:
-      case "end":
+      case 'end':
         return context$1$0.stop();
     }
   }, marked0$0[8], this, [[4, 16, 20, 28], [21,, 23, 27]]);
@@ -904,10 +905,10 @@ function filterfalse(predicate, it) {
         }
         return context$1$0.delegateYield(filter(function (x) {
           return !predicate(x);
-        }, it), "t0", 2);
+        }, it), 't0', 2);
 
       case 2:
-      case "end":
+      case 'end':
         return context$1$0.stop();
     }
   }, marked0$0[9], this);
@@ -922,7 +923,7 @@ function iter(obj, sentinel) {
           break;
         }
 
-        return context$1$0.delegateYield(obj[Symbol.iterator] ? obj[Symbol.iterator]() : obj, "t0", 2);
+        return context$1$0.delegateYield(obj[Symbol.iterator] ? obj[Symbol.iterator]() : obj, 't0', 2);
 
       case 2:
         context$1$0.next = 5;
@@ -946,7 +947,7 @@ function iter(obj, sentinel) {
                   break;
                 }
 
-                return context$2$0.abrupt("return");
+                return context$2$0.abrupt('return');
 
               case 4:
                 context$2$0.next = 6;
@@ -957,14 +958,14 @@ function iter(obj, sentinel) {
                 break;
 
               case 8:
-              case "end":
+              case 'end':
                 return context$2$0.stop();
             }
           }, callee$1$0, this);
-        })(), "t1", 5);
+        })(), 't1', 5);
 
       case 5:
-      case "end":
+      case 'end':
         return context$1$0.stop();
     }
   }, marked0$0[10], this);
@@ -1007,7 +1008,7 @@ function map(f) {
 
       case 14:
         context$1$0.prev = 14;
-        context$1$0.t0 = context$1$0["catch"](3);
+        context$1$0.t0 = context$1$0['catch'](3);
         _didIteratorError14 = true;
         _iteratorError14 = context$1$0.t0;
 
@@ -1015,8 +1016,8 @@ function map(f) {
         context$1$0.prev = 18;
         context$1$0.prev = 19;
 
-        if (!_iteratorNormalCompletion14 && _iterator14["return"]) {
-          _iterator14["return"]();
+        if (!_iteratorNormalCompletion14 && _iterator14['return']) {
+          _iterator14['return']();
         }
 
       case 21:
@@ -1036,7 +1037,7 @@ function map(f) {
         return context$1$0.finish(18);
 
       case 26:
-      case "end":
+      case 'end':
         return context$1$0.stop();
     }
   }, marked0$0[11], this, [[3, 14, 18, 26], [19,, 21, 25]]);
@@ -1065,8 +1066,8 @@ function max(it, keyfunc) {
     _iteratorError15 = err;
   } finally {
     try {
-      if (!_iteratorNormalCompletion15 && _iterator15["return"]) {
-        _iterator15["return"]();
+      if (!_iteratorNormalCompletion15 && _iterator15['return']) {
+        _iterator15['return']();
       }
     } finally {
       if (_didIteratorError15) {
@@ -1101,8 +1102,8 @@ function min(it, keyfunc) {
     _iteratorError16 = err;
   } finally {
     try {
-      if (!_iteratorNormalCompletion16 && _iterator16["return"]) {
-        _iterator16["return"]();
+      if (!_iteratorNormalCompletion16 && _iterator16['return']) {
+        _iterator16['return']();
       }
     } finally {
       if (_didIteratorError16) {
@@ -1149,7 +1150,7 @@ function range(start, stop) {
           break;
         }
 
-        return context$1$0.abrupt("return");
+        return context$1$0.abrupt('return');
 
       case 10:
         context$1$0.next = 12;
@@ -1166,7 +1167,7 @@ function range(start, stop) {
 
       case 17:
         context$1$0.prev = 17;
-        context$1$0.t0 = context$1$0["catch"](4);
+        context$1$0.t0 = context$1$0['catch'](4);
         _didIteratorError17 = true;
         _iteratorError17 = context$1$0.t0;
 
@@ -1174,8 +1175,8 @@ function range(start, stop) {
         context$1$0.prev = 21;
         context$1$0.prev = 22;
 
-        if (!_iteratorNormalCompletion17 && _iterator17["return"]) {
-          _iterator17["return"]();
+        if (!_iteratorNormalCompletion17 && _iterator17['return']) {
+          _iterator17['return']();
         }
 
       case 24:
@@ -1195,7 +1196,7 @@ function range(start, stop) {
         return context$1$0.finish(21);
 
       case 29:
-      case "end":
+      case 'end':
         return context$1$0.stop();
     }
   }, marked0$0[12], this, [[4, 17, 21, 29], [22,, 24, 28]]);
@@ -1224,8 +1225,8 @@ function reduce(f, xs, init) {
     _iteratorError18 = err;
   } finally {
     try {
-      if (!_iteratorNormalCompletion18 && _iterator18["return"]) {
-        _iterator18["return"]();
+      if (!_iteratorNormalCompletion18 && _iterator18['return']) {
+        _iterator18['return']();
       }
     } finally {
       if (_didIteratorError18) {
@@ -1251,7 +1252,7 @@ function repeat(elem, n) {
           break;
         }
 
-        return context$1$0.abrupt("break", 7);
+        return context$1$0.abrupt('break', 7);
 
       case 3:
         context$1$0.next = 5;
@@ -1262,7 +1263,7 @@ function repeat(elem, n) {
         break;
 
       case 7:
-      case "end":
+      case 'end':
         return context$1$0.stop();
     }
   }, marked0$0[13], this);
@@ -1303,7 +1304,7 @@ function slice(it, start, stop) {
           break;
         }
 
-        return context$1$0.abrupt("break", 21);
+        return context$1$0.abrupt('break', 21);
 
       case 14:
         if (!(i === nexti)) {
@@ -1328,7 +1329,7 @@ function slice(it, start, stop) {
 
       case 23:
         context$1$0.prev = 23;
-        context$1$0.t0 = context$1$0["catch"](6);
+        context$1$0.t0 = context$1$0['catch'](6);
         _didIteratorError19 = true;
         _iteratorError19 = context$1$0.t0;
 
@@ -1336,8 +1337,8 @@ function slice(it, start, stop) {
         context$1$0.prev = 27;
         context$1$0.prev = 28;
 
-        if (!_iteratorNormalCompletion19 && _iterator19["return"]) {
-          _iterator19["return"]();
+        if (!_iteratorNormalCompletion19 && _iterator19['return']) {
+          _iterator19['return']();
         }
 
       case 30:
@@ -1357,13 +1358,66 @@ function slice(it, start, stop) {
         return context$1$0.finish(27);
 
       case 35:
-        return context$1$0.abrupt("return");
+        return context$1$0.abrupt('return');
 
       case 36:
-      case "end":
+      case 'end':
         return context$1$0.stop();
     }
   }, marked0$0[14], this, [[6, 23, 27, 35], [28,, 30, 34]]);
+}
+
+function reversed(it) {
+  var xs, i;
+  return regeneratorRuntime.wrap(function reversed$(context$1$0) {
+    while (1) switch (context$1$0.prev = context$1$0.next) {
+      case 0:
+        xs = undefined;
+
+        if (!(it.constructor.name === 'Array')) {
+          context$1$0.next = 5;
+          break;
+        }
+
+        xs = it;
+        context$1$0.next = 10;
+        break;
+
+      case 5:
+        if (!(it.constructor.name === 'GeneratorFunctionPrototype')) {
+          context$1$0.next = 9;
+          break;
+        }
+
+        xs = [].concat(_toConsumableArray(it));
+        context$1$0.next = 10;
+        break;
+
+      case 9:
+        return context$1$0.abrupt('return');
+
+      case 10:
+        i = xs.length - 1;
+
+      case 11:
+        if (!(i >= 0)) {
+          context$1$0.next = 17;
+          break;
+        }
+
+        context$1$0.next = 14;
+        return xs[i];
+
+      case 14:
+        i -= 1;
+        context$1$0.next = 11;
+        break;
+
+      case 17:
+      case 'end':
+        return context$1$0.stop();
+    }
+  }, marked0$0[15], this);
 }
 
 function starmap(f, it) {
@@ -1399,7 +1453,7 @@ function starmap(f, it) {
 
       case 14:
         context$1$0.prev = 14;
-        context$1$0.t0 = context$1$0["catch"](3);
+        context$1$0.t0 = context$1$0['catch'](3);
         _didIteratorError20 = true;
         _iteratorError20 = context$1$0.t0;
 
@@ -1407,8 +1461,8 @@ function starmap(f, it) {
         context$1$0.prev = 18;
         context$1$0.prev = 19;
 
-        if (!_iteratorNormalCompletion20 && _iterator20["return"]) {
-          _iterator20["return"]();
+        if (!_iteratorNormalCompletion20 && _iterator20['return']) {
+          _iterator20['return']();
         }
 
       case 21:
@@ -1428,10 +1482,10 @@ function starmap(f, it) {
         return context$1$0.finish(18);
 
       case 26:
-      case "end":
+      case 'end':
         return context$1$0.stop();
     }
-  }, marked0$0[15], this, [[3, 14, 18, 26], [19,, 21, 25]]);
+  }, marked0$0[16], this, [[3, 14, 18, 26], [19,, 21, 25]]);
 }
 
 function takewhile(predicate, it) {
@@ -1459,7 +1513,7 @@ function takewhile(predicate, it) {
           break;
         }
 
-        return context$1$0.abrupt("return");
+        return context$1$0.abrupt('return');
 
       case 9:
         context$1$0.next = 11;
@@ -1476,7 +1530,7 @@ function takewhile(predicate, it) {
 
       case 16:
         context$1$0.prev = 16;
-        context$1$0.t0 = context$1$0["catch"](3);
+        context$1$0.t0 = context$1$0['catch'](3);
         _didIteratorError21 = true;
         _iteratorError21 = context$1$0.t0;
 
@@ -1484,8 +1538,8 @@ function takewhile(predicate, it) {
         context$1$0.prev = 20;
         context$1$0.prev = 21;
 
-        if (!_iteratorNormalCompletion21 && _iterator21["return"]) {
-          _iterator21["return"]();
+        if (!_iteratorNormalCompletion21 && _iterator21['return']) {
+          _iterator21['return']();
         }
 
       case 23:
@@ -1505,10 +1559,10 @@ function takewhile(predicate, it) {
         return context$1$0.finish(20);
 
       case 28:
-      case "end":
+      case 'end':
         return context$1$0.stop();
     }
-  }, marked0$0[16], this, [[3, 16, 20, 28], [21,, 23, 27]]);
+  }, marked0$0[17], this, [[3, 16, 20, 28], [21,, 23, 27]]);
 }
 
 function zip() {
@@ -1549,17 +1603,17 @@ function zip() {
         break;
 
       case 9:
-        return context$1$0.abrupt("return");
+        return context$1$0.abrupt('return');
 
       case 10:
         context$1$0.next = 2;
         break;
 
       case 12:
-      case "end":
+      case 'end':
         return context$1$0.stop();
     }
-  }, marked0$0[17], this);
+  }, marked0$0[18], this);
 }
 
 function add(x, y) {
@@ -1568,5 +1622,7 @@ function add(x, y) {
 //eslint-disable-line no-constant-condition
 //eslint-disable-line no-constant-condition
 //eslint-disable-line no-constant-condition
+
+// TODO error handling
 
 //# sourceMappingURL=itoolz.js.map

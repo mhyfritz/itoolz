@@ -219,6 +219,23 @@ export function* slice(it, start, stop, step = 1) {
   return;
 }
 
+export function* reversed(it) {
+  let xs;
+
+  if (it.constructor.name === 'Array') {
+    xs = it;
+  } else if (it.constructor.name === 'GeneratorFunctionPrototype') {
+    xs = [...it];
+  } else {
+    // TODO error handling
+    return;
+  }
+
+  for (let i = xs.length - 1; i >= 0; i -= 1) {
+    yield xs[i];
+  }
+}
+
 export function* starmap(f, it) {
   for (let xs of it) {
     yield f(...xs);

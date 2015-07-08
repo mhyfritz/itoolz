@@ -634,3 +634,28 @@ test('reduce - add - with initializer - generator', function (t) {
   t.equal(actual, expect);
 });
 // }}}
+
+// {{{ reversed
+test('reversed - array', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = itoolz.reversed(['foo', 'bar', 'baz', 'qux']);
+  actual = [...actual];
+  expect = ['qux', 'baz', 'bar', 'foo'];
+  t.deepEqual(actual, expect);
+});
+
+test('reversed - generator', function (t) {
+  t.plan(1);
+  let actual, expect;
+  function* g() {
+    for (let x of ['foo', 'bar', 'baz', 'qux']) {
+      yield x;
+    }
+  }
+  actual = itoolz.reversed(g());
+  actual = [...actual];
+  expect = ['qux', 'baz', 'bar', 'foo'];
+  t.deepEqual(actual, expect);
+});
+// }}}
