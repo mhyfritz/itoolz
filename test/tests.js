@@ -590,3 +590,47 @@ test('range - non-default start and step', function (t) {
   t.deepEqual(actual, expect);
 });
 // }}}
+
+// {{{ reduce
+test('reduce - add - no initializer - list', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = itoolz.reduce((x, y) => x + y, [1, 2, 3, 4, 5]);
+  expect = 15;
+  t.equal(actual, expect);
+});
+
+test('reduce - add - no initializer - generator', function (t) {
+  t.plan(1);
+  let actual, expect;
+  function* g() {
+    for (let x of [1, 2, 3, 4, 5]) {
+      yield x;
+    }
+  }
+  actual = itoolz.reduce((x, y) => x + y, g());
+  expect = 15;
+  t.equal(actual, expect);
+});
+
+test('reduce - add - with initializer - list', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = itoolz.reduce((x, y) => x + y, [1, 2, 3, 4, 5], 10);
+  expect = 25;
+  t.equal(actual, expect);
+});
+
+test('reduce - add - with initializer - generator', function (t) {
+  t.plan(1);
+  let actual, expect;
+  function* g() {
+    for (let x of [1, 2, 3, 4, 5]) {
+      yield x;
+    }
+  }
+  actual = itoolz.reduce((x, y) => x + y, g(), 10);
+  expect = 25;
+  t.equal(actual, expect);
+});
+// }}}
