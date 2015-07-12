@@ -126,6 +126,15 @@ export function* iter(obj, sentinel) {
   }
 }
 
+export function list(obj) {
+  if (obj[Symbol.iterator]) {
+    return [...obj];
+  } else if (obj.constructor && obj.constructor.name === 'Object') {
+    return Object.keys(obj);
+  }
+  return null;
+}
+
 export function* map(f, ...xss) {
   for(let xs of zip(...xss)) {
     yield f(...xs);

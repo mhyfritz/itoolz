@@ -458,6 +458,46 @@ test('filterfalse - odd - generator', function (t) {
 });
 // }}}
 
+// {{{ list
+test('list - array', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = itoolz.list(['foo', 'bar', 'baz', 'qux']);
+  expect = ['foo', 'bar', 'baz', 'qux'];
+  t.deepEqual(actual, expect);
+});
+
+test('list - object', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = itoolz.list({
+    'foo': 1,
+    'bar': 2,
+    'baz': 3,
+    'qux': 4
+  });
+  expect = ['foo', 'bar', 'baz', 'qux'];
+  actual.sort();
+  expect.sort();
+  t.deepEqual(actual, expect);
+});
+
+test('list - map', function (t) {
+  t.plan(1);
+  let actual, expect, map;
+  map = new Map();
+  map.set('foo', 1);
+  map.set('bar', 2);
+  map.set('baz', 3);
+  map.set('qux', 4);
+  actual = itoolz.list(map);
+  expect = [['foo', 1], ['bar', 2], ['baz', 3], ['qux', 4]];
+  actual.sort();
+  expect.sort();
+  t.deepEqual(actual, expect);
+});
+// }}}
+
 // {{{ map
 test('map - squares - list', function (t) {
   t.plan(1);
