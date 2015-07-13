@@ -74,17 +74,34 @@ export function* cycle(it) {
   }
 }
 
+/*
+ * TODO first version used two for...of loops
+ * with a `break` in the first one. This worked fine on iojs
+ * which suspended the generator. babel, however, exhausts
+ * the generator and so this broke... find out what the
+ * ES6 spec says about this
+ */
 export function* dropwhile(predicate, xs) {
-  let x;
   let it = iter(xs);
-  for (x of it) {
-    if (!predicate(x)) {
-      yield x;
+  let x;
+
+  while (true) {
+    x = it.next();
+    if (x.done) {
+      return;
+    }
+    if (!predicate(x.value)) {
+      yield x.value;
       break;
     }
   }
-  for (x of it) {
-    yield x;
+
+  while (true) {
+    x = it.next();
+    if (x.done) {
+      return;
+    }
+    yield x.value;
   }
 }
 

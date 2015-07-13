@@ -383,6 +383,31 @@ test('cycle - chars - generator', function (t) {
 });
 // }}}
 
+// {{{ dropwhile
+test('dropwhile - ints smaller than - list', function (t) {
+  t.plan(1);
+  let actual, expect;
+  actual = itoolz.dropwhile(x => x < 5, [1, 4, 6, 4, 1]);
+  actual = [...actual];
+  expect = [6, 4, 1];
+  t.deepEqual(actual, expect);
+});
+
+test('dropwhile - ints smaller than - generator', function (t) {
+  t.plan(1);
+  let actual, expect;
+  function* g() {
+    for (let x of [1, 4, 6, 4, 1]) {
+      yield x;
+    }
+  }
+  actual = itoolz.dropwhile(x => x < 5, g());
+  actual = [...actual];
+  expect = [6, 4, 1];
+  t.deepEqual(actual, expect);
+});
+// }}}
+
 // {{{ enumerate
 test('enumerate - chars - default start - string', function (t) {
   t.plan(1);
