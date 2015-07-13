@@ -85,7 +85,7 @@ export function* dropwhile(predicate, xs) {
   let it = iter(xs);
   let x;
 
-  while (true) {
+  while (true) { //eslint-disable-line no-constant-condition
     x = it.next();
     if (x.done) {
       return;
@@ -96,7 +96,7 @@ export function* dropwhile(predicate, xs) {
     }
   }
 
-  while (true) {
+  while (true) { //eslint-disable-line no-constant-condition
     x = it.next();
     if (x.done) {
       return;
