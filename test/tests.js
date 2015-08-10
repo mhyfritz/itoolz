@@ -636,6 +636,23 @@ test('min - ints - Infinity - generator', function (t) {
 });
 // }}}
 
+// {{{ next
+test('next - generator', function (t) {
+  t.plan('ABCD'.length);
+  let actual, expect, g;
+  g = (function* () {
+    for (let x of 'ABCD') {
+      yield x;
+    }
+  }());
+  for (expect of 'ABCD') {
+    let n = itoolz.next(g);
+    actual = n.value;
+    t.equal(actual, expect);
+  }
+});
+// }}}
+
 // {{{ range
 test('range - default start and step', function (t) {
   t.plan(1);

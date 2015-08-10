@@ -187,7 +187,7 @@ export function min(it, keyfunc) {
 }
 
 export function next(it) {
-  return it.next().value;
+  return it.next();
 }
 
 export function* range(start, stop, step = 1) {
@@ -281,11 +281,12 @@ export function* zip(...xss) {
   let its = xss.map(function (xs) {
     return xs[Symbol.iterator] ? xs[Symbol.iterator]() : xs;
   });
-  let isNotUndefined = x => x !== undefined;
+  let isNotDone = x => !x.done;
+  let pluckValue = x => x.value;
   while (its) {
     let ret = its.map(next);
-    if (all(ret, isNotUndefined)) {
-      yield ret;
+    if (all(ret, isNotDone)) {
+      yield ret.map(pluckValue);
     } else {
       return;
     }

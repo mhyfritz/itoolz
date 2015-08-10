@@ -38,7 +38,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 var marked0$0 = [accumulate, chain, chainFromIterable, compress, count, cycle, dropwhile, enumerate, filter, filterfalse, iter, map, range, repeat, slice, reversed, starmap, takewhile, zip].map(regeneratorRuntime.mark);
 
 function accumulate(xs) {
-  var f = arguments[1] === undefined ? add : arguments[1];
+  var f = arguments.length <= 1 || arguments[1] === undefined ? add : arguments[1];
 
   var it, head, acc, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, x;
 
@@ -127,7 +127,7 @@ function accumulate(xs) {
 }
 
 function all(it) {
-  var f = arguments[1] === undefined ? Boolean : arguments[1];
+  var f = arguments.length <= 1 || arguments[1] === undefined ? Boolean : arguments[1];
   var _iteratorNormalCompletion2 = true;
   var _didIteratorError2 = false;
   var _iteratorError2 = undefined;
@@ -159,7 +159,7 @@ function all(it) {
 }
 
 function any(it) {
-  var f = arguments[1] === undefined ? Boolean : arguments[1];
+  var f = arguments.length <= 1 || arguments[1] === undefined ? Boolean : arguments[1];
   var _iteratorNormalCompletion3 = true;
   var _didIteratorError3 = false;
   var _iteratorError3 = undefined;
@@ -527,8 +527,8 @@ function compress(it, select) {
 }
 
 function count() {
-  var start = arguments[0] === undefined ? 0 : arguments[0];
-  var step = arguments[1] === undefined ? 1 : arguments[1];
+  var start = arguments.length <= 0 || arguments[0] === undefined ? 0 : arguments[0];
+  var step = arguments.length <= 1 || arguments[1] === undefined ? 1 : arguments[1];
   var i;
   return regeneratorRuntime.wrap(function count$(context$1$0) {
     while (1) switch (context$1$0.prev = context$1$0.next) {
@@ -768,7 +768,7 @@ function dropwhile(predicate, xs) {
 }
 
 function enumerate(xs) {
-  var start = arguments[1] === undefined ? 0 : arguments[1];
+  var start = arguments.length <= 1 || arguments[1] === undefined ? 0 : arguments[1];
   return regeneratorRuntime.wrap(function enumerate$(context$1$0) {
     while (1) switch (context$1$0.prev = context$1$0.next) {
       case 0:
@@ -1097,11 +1097,11 @@ function min(it, keyfunc) {
 }
 
 function next(it) {
-  return it.next().value;
+  return it.next();
 }
 
 function range(start, stop) {
-  var step = arguments[2] === undefined ? 1 : arguments[2];
+  var step = arguments.length <= 2 || arguments[2] === undefined ? 1 : arguments[2];
 
   var _iteratorNormalCompletion15, _didIteratorError15, _iteratorError15, _iterator15, _step15, i;
 
@@ -1251,7 +1251,7 @@ function repeat(elem, n) {
 }
 
 function slice(it, start, stop) {
-  var step = arguments[3] === undefined ? 1 : arguments[3];
+  var step = arguments.length <= 3 || arguments[3] === undefined ? 1 : arguments[3];
 
   var is, nexti, _iteratorNormalCompletion17, _didIteratorError17, _iteratorError17, _iterator17, _step17, _step17$value, i, x;
 
@@ -1551,7 +1551,7 @@ function zip() {
     xss[_key3] = arguments[_key3];
   }
 
-  var its, isNotUndefined, ret;
+  var its, isNotDone, pluckValue, ret;
   return regeneratorRuntime.wrap(function zip$(context$1$0) {
     while (1) switch (context$1$0.prev = context$1$0.next) {
       case 0:
@@ -1559,38 +1559,42 @@ function zip() {
           return xs[Symbol.iterator] ? xs[Symbol.iterator]() : xs;
         });
 
-        isNotUndefined = function isNotUndefined(x) {
-          return x !== undefined;
+        isNotDone = function isNotDone(x) {
+          return !x.done;
         };
 
-      case 2:
+        pluckValue = function pluckValue(x) {
+          return x.value;
+        };
+
+      case 3:
         if (!its) {
-          context$1$0.next = 12;
+          context$1$0.next = 13;
           break;
         }
 
         ret = its.map(next);
 
-        if (!all(ret, isNotUndefined)) {
-          context$1$0.next = 9;
+        if (!all(ret, isNotDone)) {
+          context$1$0.next = 10;
           break;
         }
 
-        context$1$0.next = 7;
-        return ret;
+        context$1$0.next = 8;
+        return ret.map(pluckValue);
 
-      case 7:
-        context$1$0.next = 10;
+      case 8:
+        context$1$0.next = 11;
         break;
-
-      case 9:
-        return context$1$0.abrupt('return');
 
       case 10:
-        context$1$0.next = 2;
+        return context$1$0.abrupt('return');
+
+      case 11:
+        context$1$0.next = 3;
         break;
 
-      case 12:
+      case 13:
       case 'end':
         return context$1$0.stop();
     }
